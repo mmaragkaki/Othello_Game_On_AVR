@@ -1,0 +1,3894 @@
+
+Milestone_test.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00001090  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000004  00800060  00001090  00001124  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000020  00800064  00800064  00001128  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00001128  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00001158  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000078  00000000  00000000  00001194  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00001801  00000000  00000000  0000120c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000006f8  00000000  00000000  00002a0d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00001187  00000000  00000000  00003105  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000001b4  00000000  00000000  0000428c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000408  00000000  00000000  00004440  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00001bf6  00000000  00000000  00004848  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 000000b0  00000000  00000000  0000643e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+       0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+       4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+       8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+       c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+      54:	11 24       	eor	r1, r1
+      56:	1f be       	out	0x3f, r1	; 63
+      58:	cf e5       	ldi	r28, 0x5F	; 95
+      5a:	d4 e0       	ldi	r29, 0x04	; 4
+      5c:	de bf       	out	0x3e, r29	; 62
+      5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+      60:	10 e0       	ldi	r17, 0x00	; 0
+      62:	a0 e6       	ldi	r26, 0x60	; 96
+      64:	b0 e0       	ldi	r27, 0x00	; 0
+      66:	e0 e9       	ldi	r30, 0x90	; 144
+      68:	f0 e1       	ldi	r31, 0x10	; 16
+      6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+      6c:	05 90       	lpm	r0, Z+
+      6e:	0d 92       	st	X+, r0
+      70:	a4 36       	cpi	r26, 0x64	; 100
+      72:	b1 07       	cpc	r27, r17
+      74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+      76:	20 e0       	ldi	r18, 0x00	; 0
+      78:	a4 e6       	ldi	r26, 0x64	; 100
+      7a:	b0 e0       	ldi	r27, 0x00	; 0
+      7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+      7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+      80:	a4 38       	cpi	r26, 0x84	; 132
+      82:	b2 07       	cpc	r27, r18
+      84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+      86:	0e 94 08 08 	call	0x1010	; 0x1010 <main>
+      8a:	0c 94 46 08 	jmp	0x108c	; 0x108c <_exit>
+
+0000008e <__bad_interrupt>:
+      8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <setChecker>:
+	setChecker('E',5,'W') ;
+}
+
+void setChecker(char c,uint8_t column,char player)
+{
+	uint8_t index = ((c - 65) << 1) ;										/* initial index calculation for byte - array */
+      92:	81 54       	subi	r24, 0x41	; 65
+      94:	88 0f       	add	r24, r24
+	uint8_t bit = column - 1 ;												/* initial bit that we must enable - disable chess-table cell */
+	uint8_t buffer = 0 ;													/* buffer to read the specific byte from memory */
+	uint8_t temp = 0 ;
+	if (column > 4)															
+      96:	65 30       	cpi	r22, 0x05	; 5
+      98:	10 f4       	brcc	.+4      	; 0x9e <setChecker+0xc>
+}
+
+void setChecker(char c,uint8_t column,char player)
+{
+	uint8_t index = ((c - 65) << 1) ;										/* initial index calculation for byte - array */
+	uint8_t bit = column - 1 ;												/* initial bit that we must enable - disable chess-table cell */
+      9a:	61 50       	subi	r22, 0x01	; 1
+      9c:	02 c0       	rjmp	.+4      	; 0xa2 <setChecker+0x10>
+	uint8_t buffer = 0 ;													/* buffer to read the specific byte from memory */
+	uint8_t temp = 0 ;
+	if (column > 4)															
+	{
+		index++ ;
+      9e:	8f 5f       	subi	r24, 0xFF	; 255
+		bit = bit - 4 ;														/* if column > 4 jump to the next memory position */
+      a0:	65 50       	subi	r22, 0x05	; 5
+	}
+	buffer = table[index] ;
+      a2:	90 e0       	ldi	r25, 0x00	; 0
+      a4:	fc 01       	movw	r30, r24
+      a6:	ec 58       	subi	r30, 0x8C	; 140
+      a8:	ff 4f       	sbci	r31, 0xFF	; 255
+      aa:	70 81       	ld	r23, Z
+	switch(player)
+      ac:	42 34       	cpi	r20, 0x42	; 66
+      ae:	91 f4       	brne	.+36     	; 0xd4 <setChecker+0x42>
+	{
+		case 'B':														   /* case black: enable cell and valid bit */
+			buffer |= (1 << bit) | (1 << (4 + bit)) ;
+      b0:	44 e0       	ldi	r20, 0x04	; 4
+      b2:	46 0f       	add	r20, r22
+      b4:	21 e0       	ldi	r18, 0x01	; 1
+      b6:	30 e0       	ldi	r19, 0x00	; 0
+      b8:	f9 01       	movw	r30, r18
+      ba:	02 c0       	rjmp	.+4      	; 0xc0 <setChecker+0x2e>
+      bc:	ee 0f       	add	r30, r30
+      be:	ff 1f       	adc	r31, r31
+      c0:	4a 95       	dec	r20
+      c2:	e2 f7       	brpl	.-8      	; 0xbc <setChecker+0x2a>
+      c4:	02 c0       	rjmp	.+4      	; 0xca <setChecker+0x38>
+      c6:	22 0f       	add	r18, r18
+      c8:	33 1f       	adc	r19, r19
+      ca:	6a 95       	dec	r22
+      cc:	e2 f7       	brpl	.-8      	; 0xc6 <setChecker+0x34>
+      ce:	27 2b       	or	r18, r23
+      d0:	2e 2b       	or	r18, r30
+		break;
+      d2:	12 c0       	rjmp	.+36     	; 0xf8 <setChecker+0x66>
+		default:														  /* case white: reset cell and enable valid bit */
+			temp |= (1 << bit) ;
+      d4:	21 e0       	ldi	r18, 0x01	; 1
+      d6:	30 e0       	ldi	r19, 0x00	; 0
+      d8:	a9 01       	movw	r20, r18
+      da:	06 2e       	mov	r0, r22
+      dc:	02 c0       	rjmp	.+4      	; 0xe2 <setChecker+0x50>
+      de:	44 0f       	add	r20, r20
+      e0:	55 1f       	adc	r21, r21
+      e2:	0a 94       	dec	r0
+      e4:	e2 f7       	brpl	.-8      	; 0xde <setChecker+0x4c>
+			temp = ~ temp ;
+			buffer = buffer & temp ; 
+			buffer |= (1 << (4 + bit)) ;
+      e6:	6c 5f       	subi	r22, 0xFC	; 252
+      e8:	02 c0       	rjmp	.+4      	; 0xee <setChecker+0x5c>
+      ea:	22 0f       	add	r18, r18
+      ec:	33 1f       	adc	r19, r19
+      ee:	6a 95       	dec	r22
+      f0:	e2 f7       	brpl	.-8      	; 0xea <setChecker+0x58>
+      f2:	40 95       	com	r20
+      f4:	47 23       	and	r20, r23
+      f6:	24 2b       	or	r18, r20
+		break;
+	}
+	table[index] = buffer ;
+      f8:	fc 01       	movw	r30, r24
+      fa:	ec 58       	subi	r30, 0x8C	; 140
+      fc:	ff 4f       	sbci	r31, 0xFF	; 255
+      fe:	20 83       	st	Z, r18
+     100:	08 95       	ret
+
+00000102 <readCell>:
+}
+
+char readCell(char c,uint8_t column)
+{
+	uint8_t index = ((c - 65) << 1) ;								/* find appropriate index from ascii code */
+     102:	81 54       	subi	r24, 0x41	; 65
+     104:	88 0f       	add	r24, r24
+	uint8_t bit = column - 1 ;										/* find initial bit position from the column */
+	uint8_t buffer = 0 ;
+	char retC = 'E' ;
+	if (column > 4)													/* if column > jump to the next position for the half byte */
+     106:	65 30       	cpi	r22, 0x05	; 5
+     108:	10 f4       	brcc	.+4      	; 0x10e <readCell+0xc>
+}
+
+char readCell(char c,uint8_t column)
+{
+	uint8_t index = ((c - 65) << 1) ;								/* find appropriate index from ascii code */
+	uint8_t bit = column - 1 ;										/* find initial bit position from the column */
+     10a:	61 50       	subi	r22, 0x01	; 1
+     10c:	02 c0       	rjmp	.+4      	; 0x112 <readCell+0x10>
+	uint8_t buffer = 0 ;
+	char retC = 'E' ;
+	if (column > 4)													/* if column > jump to the next position for the half byte */
+	{
+		index++ ;
+     10e:	8f 5f       	subi	r24, 0xFF	; 255
+		bit = bit - 4 ;
+     110:	65 50       	subi	r22, 0x05	; 5
+	}
+	buffer = table[index] ;											/* read data from memory cell and store into buffer */
+     112:	e8 2f       	mov	r30, r24
+     114:	f0 e0       	ldi	r31, 0x00	; 0
+     116:	ec 58       	subi	r30, 0x8C	; 140
+     118:	ff 4f       	sbci	r31, 0xFF	; 255
+	if (!(buffer & (1 << (4+bit))))									/* if the enable bit of this bit position is zero then this is empty position */
+     11a:	80 81       	ld	r24, Z
+     11c:	90 e0       	ldi	r25, 0x00	; 0
+     11e:	24 e0       	ldi	r18, 0x04	; 4
+     120:	26 0f       	add	r18, r22
+     122:	ac 01       	movw	r20, r24
+     124:	02 c0       	rjmp	.+4      	; 0x12a <readCell+0x28>
+     126:	55 95       	asr	r21
+     128:	47 95       	ror	r20
+     12a:	2a 95       	dec	r18
+     12c:	e2 f7       	brpl	.-8      	; 0x126 <readCell+0x24>
+     12e:	40 ff       	sbrs	r20, 0
+     130:	09 c0       	rjmp	.+18     	; 0x144 <readCell+0x42>
+	{
+		retC = 'E' ;
+	}
+	else if (buffer & (1 << bit))								   /* if enable-bit is 1 and the bit-pos is 1 then this is black */
+     132:	02 c0       	rjmp	.+4      	; 0x138 <readCell+0x36>
+     134:	95 95       	asr	r25
+     136:	87 95       	ror	r24
+     138:	6a 95       	dec	r22
+     13a:	e2 f7       	brpl	.-8      	; 0x134 <readCell+0x32>
+     13c:	80 fd       	sbrc	r24, 0
+     13e:	04 c0       	rjmp	.+8      	; 0x148 <readCell+0x46>
+	{
+		retC = 'B' ;
+	}
+	else                                                           /* if only the enable-bit is asserted then this is white */
+	{
+		retC = 'W' ;
+     140:	87 e5       	ldi	r24, 0x57	; 87
+     142:	08 95       	ret
+		bit = bit - 4 ;
+	}
+	buffer = table[index] ;											/* read data from memory cell and store into buffer */
+	if (!(buffer & (1 << (4+bit))))									/* if the enable bit of this bit position is zero then this is empty position */
+	{
+		retC = 'E' ;
+     144:	85 e4       	ldi	r24, 0x45	; 69
+     146:	08 95       	ret
+	}
+	else if (buffer & (1 << bit))								   /* if enable-bit is 1 and the bit-pos is 1 then this is black */
+	{
+		retC = 'B' ;
+     148:	82 e4       	ldi	r24, 0x42	; 66
+	else                                                           /* if only the enable-bit is asserted then this is white */
+	{
+		retC = 'W' ;
+	}
+	return retC ;
+}
+     14a:	08 95       	ret
+
+0000014c <insertMineValid>:
+
+void insertMineValid(char c,uint8_t column)					/* This stores a mine valid move into the validtable */
+{
+	uint8_t index = c - 65 ;
+	uint8_t bit = column - 1 ;
+	uint8_t buffer = mineValidtable[index] ;
+     14c:	81 54       	subi	r24, 0x41	; 65
+     14e:	e8 2f       	mov	r30, r24
+     150:	f0 e0       	ldi	r31, 0x00	; 0
+	buffer |= (1 << bit) ;
+     152:	61 50       	subi	r22, 0x01	; 1
+     154:	81 e0       	ldi	r24, 0x01	; 1
+     156:	90 e0       	ldi	r25, 0x00	; 0
+     158:	02 c0       	rjmp	.+4      	; 0x15e <insertMineValid+0x12>
+     15a:	88 0f       	add	r24, r24
+     15c:	99 1f       	adc	r25, r25
+     15e:	6a 95       	dec	r22
+     160:	e2 f7       	brpl	.-8      	; 0x15a <insertMineValid+0xe>
+
+void insertMineValid(char c,uint8_t column)					/* This stores a mine valid move into the validtable */
+{
+	uint8_t index = c - 65 ;
+	uint8_t bit = column - 1 ;
+	uint8_t buffer = mineValidtable[index] ;
+     162:	e4 59       	subi	r30, 0x94	; 148
+     164:	ff 4f       	sbci	r31, 0xFF	; 255
+	buffer |= (1 << bit) ;
+     166:	90 81       	ld	r25, Z
+     168:	89 2b       	or	r24, r25
+	mineValidtable[index] = buffer ;
+     16a:	80 83       	st	Z, r24
+     16c:	08 95       	ret
+
+0000016e <insertEnemyValid>:
+
+void insertEnemyValid(char c,uint8_t column)					/* This stores a mine valid move into the validtable */
+{
+	uint8_t index = c - 65 ;
+	uint8_t bit = column - 1 ;
+	uint8_t buffer = enemyValidtable[index] ;
+     16e:	81 54       	subi	r24, 0x41	; 65
+     170:	e8 2f       	mov	r30, r24
+     172:	f0 e0       	ldi	r31, 0x00	; 0
+	buffer |= (1 << bit) ;
+     174:	61 50       	subi	r22, 0x01	; 1
+     176:	81 e0       	ldi	r24, 0x01	; 1
+     178:	90 e0       	ldi	r25, 0x00	; 0
+     17a:	02 c0       	rjmp	.+4      	; 0x180 <insertEnemyValid+0x12>
+     17c:	88 0f       	add	r24, r24
+     17e:	99 1f       	adc	r25, r25
+     180:	6a 95       	dec	r22
+     182:	e2 f7       	brpl	.-8      	; 0x17c <insertEnemyValid+0xe>
+
+void insertEnemyValid(char c,uint8_t column)					/* This stores a mine valid move into the validtable */
+{
+	uint8_t index = c - 65 ;
+	uint8_t bit = column - 1 ;
+	uint8_t buffer = enemyValidtable[index] ;
+     184:	ec 59       	subi	r30, 0x9C	; 156
+     186:	ff 4f       	sbci	r31, 0xFF	; 255
+	buffer |= (1 << bit) ;
+     188:	90 81       	ld	r25, Z
+     18a:	89 2b       	or	r24, r25
+	enemyValidtable[index] = buffer ;
+     18c:	80 83       	st	Z, r24
+     18e:	08 95       	ret
+
+00000190 <checkAvailable>:
+	}
+	return count ;
+}
+
+void checkAvailable(char c,uint8_t j,char player,char mine)
+{
+     190:	7f 92       	push	r7
+     192:	8f 92       	push	r8
+     194:	9f 92       	push	r9
+     196:	af 92       	push	r10
+     198:	bf 92       	push	r11
+     19a:	cf 92       	push	r12
+     19c:	df 92       	push	r13
+     19e:	ef 92       	push	r14
+     1a0:	ff 92       	push	r15
+     1a2:	0f 93       	push	r16
+     1a4:	1f 93       	push	r17
+     1a6:	cf 93       	push	r28
+     1a8:	df 93       	push	r29
+     1aa:	c8 2f       	mov	r28, r24
+     1ac:	d6 2f       	mov	r29, r22
+     1ae:	c4 2e       	mov	r12, r20
+     1b0:	d2 2e       	mov	r13, r18
+	uint8_t found = 0 ;
+	uint8_t i = j ;
+	uint8_t coltemp = j ;
+	switch (player)
+     1b2:	82 e4       	ldi	r24, 0x42	; 66
+     1b4:	48 13       	cpse	r20, r24
+     1b6:	a3 c1       	rjmp	.+838    	; 0x4fe <__stack+0x9f>
+	{
+		case 'B':
+												/* check right of the enemy - checker for other my own checkers */
+		i++ ;
+     1b8:	01 e0       	ldi	r16, 0x01	; 1
+     1ba:	06 0f       	add	r16, r22
+		while (i <= 8 && found == 0 && readCell(c,i) != 'E')
+     1bc:	09 30       	cpi	r16, 0x09	; 9
+     1be:	40 f0       	brcs	.+16     	; 0x1d0 <checkAvailable+0x40>
+     1c0:	23 c0       	rjmp	.+70     	; 0x208 <checkAvailable+0x78>
+		{
+		
+			if (readCell(c,i) == 'B')
+     1c2:	82 34       	cpi	r24, 0x42	; 66
+     1c4:	09 f4       	brne	.+2      	; 0x1c8 <checkAvailable+0x38>
+     1c6:	35 c3       	rjmp	.+1642   	; 0x832 <__stack+0x3d3>
+			{
+				found = 1 ;
+			}
+			i++ ;
+     1c8:	1f 5f       	subi	r17, 0xFF	; 255
+	switch (player)
+	{
+		case 'B':
+												/* check right of the enemy - checker for other my own checkers */
+		i++ ;
+		while (i <= 8 && found == 0 && readCell(c,i) != 'E')
+     1ca:	19 30       	cpi	r17, 0x09	; 9
+     1cc:	11 f4       	brne	.+4      	; 0x1d2 <checkAvailable+0x42>
+     1ce:	1c c0       	rjmp	.+56     	; 0x208 <checkAvailable+0x78>
+     1d0:	10 2f       	mov	r17, r16
+     1d2:	61 2f       	mov	r22, r17
+     1d4:	8c 2f       	mov	r24, r28
+     1d6:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     1da:	85 34       	cpi	r24, 0x45	; 69
+     1dc:	91 f7       	brne	.-28     	; 0x1c2 <checkAvailable+0x32>
+     1de:	14 c0       	rjmp	.+40     	; 0x208 <checkAvailable+0x78>
+			}
+			i++ ;
+		}
+		if (found == 1 && j-1 > 0)
+		{
+			if (readCell(c,j-1) == 'E')
+     1e0:	1f ef       	ldi	r17, 0xFF	; 255
+     1e2:	1d 0f       	add	r17, r29
+     1e4:	61 2f       	mov	r22, r17
+     1e6:	8c 2f       	mov	r24, r28
+     1e8:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     1ec:	85 34       	cpi	r24, 0x45	; 69
+     1ee:	61 f4       	brne	.+24     	; 0x208 <checkAvailable+0x78>
+			{
+				/* Available move c, j-1 */						/* The valid move is one left */
+				if (mine == player)								/* If the colour is mine */
+     1f0:	92 e4       	ldi	r25, 0x42	; 66
+     1f2:	d9 12       	cpse	r13, r25
+     1f4:	05 c0       	rjmp	.+10     	; 0x200 <checkAvailable+0x70>
+				{												/* then save this available move as mine */
+					insertMineValid(c,j-1) ;
+     1f6:	61 2f       	mov	r22, r17
+     1f8:	8c 2f       	mov	r24, r28
+     1fa:	0e 94 a6 00 	call	0x14c	; 0x14c <insertMineValid>
+     1fe:	04 c0       	rjmp	.+8      	; 0x208 <checkAvailable+0x78>
+				}
+				else                                           /* else save this move as enemy available move */
+				{
+					insertEnemyValid(c,j-1) ;
+     200:	61 2f       	mov	r22, r17
+     202:	8c 2f       	mov	r24, r28
+     204:	0e 94 b7 00 	call	0x16e	; 0x16e <insertEnemyValid>
+			}
+		}
+	
+		found = 0 ;												/* check left of the enemy - checker for other my own checkers */
+		i = j ;
+		i-- ;
+     208:	cc 24       	eor	r12, r12
+     20a:	ca 94       	dec	r12
+     20c:	cd 0e       	add	r12, r29
+		while (i > 1 && found == 0 && readCell(c,i) != 'E')
+     20e:	81 e0       	ldi	r24, 0x01	; 1
+     210:	8c 15       	cp	r24, r12
+     212:	40 f0       	brcs	.+16     	; 0x224 <checkAvailable+0x94>
+     214:	21 c0       	rjmp	.+66     	; 0x258 <checkAvailable+0xc8>
+		{
+		
+			if (readCell(c,i) == 'B')
+     216:	82 34       	cpi	r24, 0x42	; 66
+     218:	09 f4       	brne	.+2      	; 0x21c <checkAvailable+0x8c>
+     21a:	13 c3       	rjmp	.+1574   	; 0x842 <__stack+0x3e3>
+			{
+				found = 1 ;
+			}
+			i-- ;
+     21c:	11 50       	subi	r17, 0x01	; 1
+		}
+	
+		found = 0 ;												/* check left of the enemy - checker for other my own checkers */
+		i = j ;
+		i-- ;
+		while (i > 1 && found == 0 && readCell(c,i) != 'E')
+     21e:	11 30       	cpi	r17, 0x01	; 1
+     220:	11 f4       	brne	.+4      	; 0x226 <checkAvailable+0x96>
+     222:	1a c0       	rjmp	.+52     	; 0x258 <checkAvailable+0xc8>
+     224:	1c 2d       	mov	r17, r12
+     226:	61 2f       	mov	r22, r17
+     228:	8c 2f       	mov	r24, r28
+     22a:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     22e:	85 34       	cpi	r24, 0x45	; 69
+     230:	91 f7       	brne	.-28     	; 0x216 <checkAvailable+0x86>
+     232:	12 c0       	rjmp	.+36     	; 0x258 <checkAvailable+0xc8>
+			i-- ;
+		
+		}
+		if (found == 1 && j+1 < 9)
+		{
+			if (readCell(c,j+1) == 'E')
+     234:	60 2f       	mov	r22, r16
+     236:	8c 2f       	mov	r24, r28
+     238:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     23c:	85 34       	cpi	r24, 0x45	; 69
+     23e:	61 f4       	brne	.+24     	; 0x258 <checkAvailable+0xc8>
+			{
+				/* Available move c, j+1 */							/* The valid move is one right */
+				if (mine == player)									/* If the colour is mine */
+     240:	92 e4       	ldi	r25, 0x42	; 66
+     242:	d9 12       	cpse	r13, r25
+     244:	05 c0       	rjmp	.+10     	; 0x250 <checkAvailable+0xc0>
+				{                                                   /* then save this move as mine available */
+					insertMineValid(c,j+1) ;
+     246:	60 2f       	mov	r22, r16
+     248:	8c 2f       	mov	r24, r28
+     24a:	0e 94 a6 00 	call	0x14c	; 0x14c <insertMineValid>
+     24e:	04 c0       	rjmp	.+8      	; 0x258 <checkAvailable+0xc8>
+				}
+				else                                               /* else save it as opponents available move */
+				{
+					insertEnemyValid(c,j+1) ;
+     250:	60 2f       	mov	r22, r16
+     252:	8c 2f       	mov	r24, r28
+     254:	0e 94 b7 00 	call	0x16e	; 0x16e <insertEnemyValid>
+			}
+		}
+	
+		found = 0 ;											 /* check up of the enemy - checker for other my own checkers */
+		i = c ;
+		i-- ;
+     258:	bb 24       	eor	r11, r11
+     25a:	ba 94       	dec	r11
+     25c:	bc 0e       	add	r11, r28
+		while (i > '@' && found == 0 && readCell(i,j) != 'E')
+     25e:	80 e4       	ldi	r24, 0x40	; 64
+     260:	8b 15       	cp	r24, r11
+     262:	40 f0       	brcs	.+16     	; 0x274 <checkAvailable+0xe4>
+     264:	fd c2       	rjmp	.+1530   	; 0x860 <__stack+0x401>
+		{
+		
+			if (readCell(i,j) == 'B')
+     266:	82 34       	cpi	r24, 0x42	; 66
+     268:	09 f4       	brne	.+2      	; 0x26c <checkAvailable+0xdc>
+     26a:	f2 c2       	rjmp	.+1508   	; 0x850 <__stack+0x3f1>
+			{
+				found = 1 ;
+			}
+			i-- ;
+     26c:	11 50       	subi	r17, 0x01	; 1
+		}
+	
+		found = 0 ;											 /* check up of the enemy - checker for other my own checkers */
+		i = c ;
+		i-- ;
+		while (i > '@' && found == 0 && readCell(i,j) != 'E')
+     26e:	10 34       	cpi	r17, 0x40	; 64
+     270:	11 f4       	brne	.+4      	; 0x276 <checkAvailable+0xe6>
+     272:	1c c0       	rjmp	.+56     	; 0x2ac <checkAvailable+0x11c>
+     274:	1b 2d       	mov	r17, r11
+     276:	6d 2f       	mov	r22, r29
+     278:	81 2f       	mov	r24, r17
+     27a:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     27e:	85 34       	cpi	r24, 0x45	; 69
+     280:	91 f7       	brne	.-28     	; 0x266 <checkAvailable+0xd6>
+     282:	14 c0       	rjmp	.+40     	; 0x2ac <checkAvailable+0x11c>
+			}
+			i-- ;
+		}
+		if (found == 1 && c+1 < 'I')
+		{
+			if (readCell(c+1,j) == 'E')
+     284:	11 e0       	ldi	r17, 0x01	; 1
+     286:	1c 0f       	add	r17, r28
+     288:	6d 2f       	mov	r22, r29
+     28a:	81 2f       	mov	r24, r17
+     28c:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     290:	85 34       	cpi	r24, 0x45	; 69
+     292:	61 f4       	brne	.+24     	; 0x2ac <checkAvailable+0x11c>
+			{
+				/* Valid pos c+1, j */
+				if (mine == player)
+     294:	92 e4       	ldi	r25, 0x42	; 66
+     296:	d9 12       	cpse	r13, r25
+     298:	05 c0       	rjmp	.+10     	; 0x2a4 <checkAvailable+0x114>
+				{
+					insertMineValid(c+1,j) ;
+     29a:	6d 2f       	mov	r22, r29
+     29c:	81 2f       	mov	r24, r17
+     29e:	0e 94 a6 00 	call	0x14c	; 0x14c <insertMineValid>
+     2a2:	04 c0       	rjmp	.+8      	; 0x2ac <checkAvailable+0x11c>
+				}
+				else
+				{
+					insertEnemyValid(c+1,j) ;
+     2a4:	6d 2f       	mov	r22, r29
+     2a6:	81 2f       	mov	r24, r17
+     2a8:	0e 94 b7 00 	call	0x16e	; 0x16e <insertEnemyValid>
+			}
+		}
+	
+		found = 0 ;										   /* check down of the enemy - checker for other my own checkers */
+		i = c ;
+		i++ ;
+     2ac:	11 e0       	ldi	r17, 0x01	; 1
+     2ae:	1c 0f       	add	r17, r28
+		while (i < 'I' && found == 0 && readCell(i,j) != 'E')
+     2b0:	19 34       	cpi	r17, 0x49	; 73
+     2b2:	48 f0       	brcs	.+18     	; 0x2c6 <checkAvailable+0x136>
+     2b4:	1d c0       	rjmp	.+58     	; 0x2f0 <checkAvailable+0x160>
+		{
+			if (readCell(i,j) == 'B')
+     2b6:	82 34       	cpi	r24, 0x42	; 66
+     2b8:	09 f4       	brne	.+2      	; 0x2bc <checkAvailable+0x12c>
+     2ba:	d8 c2       	rjmp	.+1456   	; 0x86c <__stack+0x40d>
+			{
+				found = 1 ;
+			}
+			i++ ;
+     2bc:	f3 94       	inc	r15
+		}
+	
+		found = 0 ;										   /* check down of the enemy - checker for other my own checkers */
+		i = c ;
+		i++ ;
+		while (i < 'I' && found == 0 && readCell(i,j) != 'E')
+     2be:	89 e4       	ldi	r24, 0x49	; 73
+     2c0:	f8 12       	cpse	r15, r24
+     2c2:	02 c0       	rjmp	.+4      	; 0x2c8 <checkAvailable+0x138>
+     2c4:	15 c0       	rjmp	.+42     	; 0x2f0 <checkAvailable+0x160>
+		}
+	
+		found = 0 ;											 /* check up of the enemy - checker for other my own checkers */
+		i = c ;
+		i-- ;
+		while (i > '@' && found == 0 && readCell(i,j) != 'E')
+     2c6:	f1 2e       	mov	r15, r17
+		}
+	
+		found = 0 ;										   /* check down of the enemy - checker for other my own checkers */
+		i = c ;
+		i++ ;
+		while (i < 'I' && found == 0 && readCell(i,j) != 'E')
+     2c8:	6d 2f       	mov	r22, r29
+     2ca:	8f 2d       	mov	r24, r15
+     2cc:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     2d0:	85 34       	cpi	r24, 0x45	; 69
+     2d2:	89 f7       	brne	.-30     	; 0x2b6 <checkAvailable+0x126>
+     2d4:	0d c0       	rjmp	.+26     	; 0x2f0 <checkAvailable+0x160>
+			}
+			i++ ;
+		}
+		if (found == 1 && c - 1 > '@')
+		{
+			if (readCell(c-1,j) == 'E')
+     2d6:	6d 2f       	mov	r22, r29
+     2d8:	8b 2d       	mov	r24, r11
+     2da:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     2de:	85 34       	cpi	r24, 0x45	; 69
+     2e0:	39 f4       	brne	.+14     	; 0x2f0 <checkAvailable+0x160>
+			{
+				/* Valid pos c-1,j */
+				if (mine == player)
+     2e2:	92 e4       	ldi	r25, 0x42	; 66
+     2e4:	d9 12       	cpse	r13, r25
+     2e6:	0b c0       	rjmp	.+22     	; 0x2fe <checkAvailable+0x16e>
+				{
+					insertMineValid(c-1,j) ;
+     2e8:	6d 2f       	mov	r22, r29
+     2ea:	8b 2d       	mov	r24, r11
+     2ec:	0e 94 a6 00 	call	0x14c	; 0x14c <insertMineValid>
+		/* check main diagon up */
+		found = 0 ;
+		i = c ;
+		i-- ;
+		coltemp++ ;
+		while (i > '@' && coltemp < 9 && (readCell(i,coltemp) != 'E') && found == 0)
+     2f0:	80 e4       	ldi	r24, 0x40	; 64
+     2f2:	8b 15       	cp	r24, r11
+     2f4:	08 f0       	brcs	.+2      	; 0x2f8 <checkAvailable+0x168>
+     2f6:	3f c0       	rjmp	.+126    	; 0x376 <checkAvailable+0x1e6>
+     2f8:	09 30       	cpi	r16, 0x09	; 9
+     2fa:	98 f0       	brcs	.+38     	; 0x322 <checkAvailable+0x192>
+     2fc:	3c c0       	rjmp	.+120    	; 0x376 <checkAvailable+0x1e6>
+				{
+					insertMineValid(c-1,j) ;
+				}
+				else
+				{
+					insertEnemyValid(c-1,j) ;
+     2fe:	6d 2f       	mov	r22, r29
+     300:	8b 2d       	mov	r24, r11
+     302:	0e 94 b7 00 	call	0x16e	; 0x16e <insertEnemyValid>
+     306:	f4 cf       	rjmp	.-24     	; 0x2f0 <checkAvailable+0x160>
+		coltemp++ ;
+		while (i > '@' && coltemp < 9 && (readCell(i,coltemp) != 'E') && found == 0)
+		{
+			if (readCell(i,coltemp) == 'B')
+			{
+				found = 1 ;
+     308:	a9 2c       	mov	r10, r9
+     30a:	82 34       	cpi	r24, 0x42	; 66
+     30c:	09 f0       	breq	.+2      	; 0x310 <checkAvailable+0x180>
+     30e:	a8 2c       	mov	r10, r8
+			}
+			i-- ;
+     310:	fa 94       	dec	r15
+			coltemp++ ;
+     312:	e3 94       	inc	r14
+		/* check main diagon up */
+		found = 0 ;
+		i = c ;
+		i-- ;
+		coltemp++ ;
+		while (i > '@' && coltemp < 9 && (readCell(i,coltemp) != 'E') && found == 0)
+     314:	90 e4       	ldi	r25, 0x40	; 64
+     316:	f9 16       	cp	r15, r25
+     318:	91 f0       	breq	.+36     	; 0x33e <checkAvailable+0x1ae>
+     31a:	89 e0       	ldi	r24, 0x09	; 9
+     31c:	e8 12       	cpse	r14, r24
+     31e:	07 c0       	rjmp	.+14     	; 0x32e <checkAvailable+0x19e>
+     320:	0e c0       	rjmp	.+28     	; 0x33e <checkAvailable+0x1ae>
+     322:	e0 2e       	mov	r14, r16
+     324:	fb 2c       	mov	r15, r11
+     326:	a1 2c       	mov	r10, r1
+		{
+			if (readCell(i,coltemp) == 'B')
+			{
+				found = 1 ;
+     328:	99 24       	eor	r9, r9
+     32a:	93 94       	inc	r9
+     32c:	81 2c       	mov	r8, r1
+		/* check main diagon up */
+		found = 0 ;
+		i = c ;
+		i-- ;
+		coltemp++ ;
+		while (i > '@' && coltemp < 9 && (readCell(i,coltemp) != 'E') && found == 0)
+     32e:	6e 2d       	mov	r22, r14
+     330:	8f 2d       	mov	r24, r15
+     332:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     336:	85 34       	cpi	r24, 0x45	; 69
+     338:	11 f0       	breq	.+4      	; 0x33e <checkAvailable+0x1ae>
+     33a:	aa 20       	and	r10, r10
+     33c:	29 f3       	breq	.-54     	; 0x308 <checkAvailable+0x178>
+				found = 1 ;
+			}
+			i-- ;
+			coltemp++ ;
+		}
+		if (found == 1 && (c+1 < 'I') && (j-1 > 0))
+     33e:	91 e0       	ldi	r25, 0x01	; 1
+     340:	a9 12       	cpse	r10, r25
+     342:	19 c0       	rjmp	.+50     	; 0x376 <checkAvailable+0x1e6>
+     344:	8c 2f       	mov	r24, r28
+     346:	90 e0       	ldi	r25, 0x00	; 0
+     348:	01 96       	adiw	r24, 0x01	; 1
+     34a:	89 34       	cpi	r24, 0x49	; 73
+     34c:	91 05       	cpc	r25, r1
+     34e:	9c f4       	brge	.+38     	; 0x376 <checkAvailable+0x1e6>
+     350:	8d 2f       	mov	r24, r29
+     352:	90 e0       	ldi	r25, 0x00	; 0
+     354:	01 97       	sbiw	r24, 0x01	; 1
+     356:	18 16       	cp	r1, r24
+     358:	19 06       	cpc	r1, r25
+     35a:	6c f4       	brge	.+26     	; 0x376 <checkAvailable+0x1e6>
+		{
+			if (readCell(c+1,j-1) == 'E')
+     35c:	6c 2d       	mov	r22, r12
+     35e:	81 2f       	mov	r24, r17
+     360:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     364:	85 34       	cpi	r24, 0x45	; 69
+     366:	39 f4       	brne	.+14     	; 0x376 <checkAvailable+0x1e6>
+			{
+				/* Valid pos c+1,j-1 */
+				if (mine == player)
+     368:	82 e4       	ldi	r24, 0x42	; 66
+     36a:	d8 12       	cpse	r13, r24
+     36c:	0a c0       	rjmp	.+20     	; 0x382 <checkAvailable+0x1f2>
+				{
+					insertMineValid(c+1,j-1) ;
+     36e:	6c 2d       	mov	r22, r12
+     370:	81 2f       	mov	r24, r17
+     372:	0e 94 a6 00 	call	0x14c	; 0x14c <insertMineValid>
+		found = 0 ;
+		i = c ;
+		coltemp = j ;
+		i++ ;
+		coltemp-- ;
+		while((i < 'I') && (coltemp > 0) && (found == 0) && (readCell(i,coltemp) != 'E'))
+     376:	19 34       	cpi	r17, 0x49	; 73
+     378:	08 f0       	brcs	.+2      	; 0x37c <checkAvailable+0x1ec>
+     37a:	80 c2       	rjmp	.+1280   	; 0x87c <__stack+0x41d>
+     37c:	c1 10       	cpse	r12, r1
+     37e:	10 c0       	rjmp	.+32     	; 0x3a0 <checkAvailable+0x210>
+     380:	77 c0       	rjmp	.+238    	; 0x470 <__stack+0x11>
+				{
+					insertMineValid(c+1,j-1) ;
+				}
+				else
+				{
+					insertEnemyValid(c+1,j-1) ;
+     382:	6c 2d       	mov	r22, r12
+     384:	81 2f       	mov	r24, r17
+     386:	0e 94 b7 00 	call	0x16e	; 0x16e <insertEnemyValid>
+     38a:	f5 cf       	rjmp	.-22     	; 0x376 <checkAvailable+0x1e6>
+		{
+			if (readCell(i,coltemp) == 'B')
+			{
+				found = 1 ;
+			}
+			i++ ;
+     38c:	f3 94       	inc	r15
+			coltemp-- ;
+     38e:	ea 94       	dec	r14
+		found = 0 ;
+		i = c ;
+		coltemp = j ;
+		i++ ;
+		coltemp-- ;
+		while((i < 'I') && (coltemp > 0) && (found == 0) && (readCell(i,coltemp) != 'E'))
+     390:	99 e4       	ldi	r25, 0x49	; 73
+     392:	f9 16       	cp	r15, r25
+     394:	71 f0       	breq	.+28     	; 0x3b2 <checkAvailable+0x222>
+     396:	ee 20       	and	r14, r14
+     398:	61 f0       	breq	.+24     	; 0x3b2 <checkAvailable+0x222>
+     39a:	82 34       	cpi	r24, 0x42	; 66
+     39c:	19 f4       	brne	.+6      	; 0x3a4 <checkAvailable+0x214>
+     39e:	09 c0       	rjmp	.+18     	; 0x3b2 <checkAvailable+0x222>
+     3a0:	ec 2c       	mov	r14, r12
+     3a2:	f1 2e       	mov	r15, r17
+     3a4:	6e 2d       	mov	r22, r14
+     3a6:	8f 2d       	mov	r24, r15
+     3a8:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     3ac:	85 34       	cpi	r24, 0x45	; 69
+     3ae:	71 f7       	brne	.-36     	; 0x38c <checkAvailable+0x1fc>
+     3b0:	1f c0       	rjmp	.+62     	; 0x3f0 <checkAvailable+0x260>
+				found = 1 ;
+			}
+			i++ ;
+			coltemp-- ;
+		}
+		if (found == 1 && (c-1 > '@') && (j+1 < 9))
+     3b2:	82 34       	cpi	r24, 0x42	; 66
+     3b4:	09 f0       	breq	.+2      	; 0x3b8 <checkAvailable+0x228>
+     3b6:	67 c2       	rjmp	.+1230   	; 0x886 <__stack+0x427>
+     3b8:	8c 2f       	mov	r24, r28
+     3ba:	90 e0       	ldi	r25, 0x00	; 0
+     3bc:	01 97       	sbiw	r24, 0x01	; 1
+     3be:	81 34       	cpi	r24, 0x41	; 65
+     3c0:	91 05       	cpc	r25, r1
+     3c2:	0c f4       	brge	.+2      	; 0x3c6 <checkAvailable+0x236>
+     3c4:	60 c2       	rjmp	.+1216   	; 0x886 <__stack+0x427>
+     3c6:	8d 2f       	mov	r24, r29
+     3c8:	90 e0       	ldi	r25, 0x00	; 0
+     3ca:	01 96       	adiw	r24, 0x01	; 1
+     3cc:	09 97       	sbiw	r24, 0x09	; 9
+     3ce:	0c f0       	brlt	.+2      	; 0x3d2 <checkAvailable+0x242>
+     3d0:	5a c2       	rjmp	.+1204   	; 0x886 <__stack+0x427>
+		{
+			if (readCell(c-1,j+1) == 'E')
+     3d2:	60 2f       	mov	r22, r16
+     3d4:	8b 2d       	mov	r24, r11
+     3d6:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     3da:	85 34       	cpi	r24, 0x45	; 69
+     3dc:	09 f0       	breq	.+2      	; 0x3e0 <checkAvailable+0x250>
+     3de:	53 c2       	rjmp	.+1190   	; 0x886 <__stack+0x427>
+			{
+				/* Valid pos c-1, j+1 */
+				if (player == mine)
+     3e0:	82 e4       	ldi	r24, 0x42	; 66
+     3e2:	d8 12       	cpse	r13, r24
+     3e4:	0b c0       	rjmp	.+22     	; 0x3fc <checkAvailable+0x26c>
+				{
+					insertMineValid(c-1,j+1) ;
+     3e6:	60 2f       	mov	r22, r16
+     3e8:	8b 2d       	mov	r24, r11
+     3ea:	0e 94 a6 00 	call	0x14c	; 0x14c <insertMineValid>
+     3ee:	4b c2       	rjmp	.+1174   	; 0x886 <__stack+0x427>
+		found = 0 ;
+		i = c ;
+		coltemp = j ;
+		i-- ;
+		coltemp-- ;
+		while((i > '@') && (coltemp > 0) && (readCell(i,coltemp) != 'E') && (found == 0))
+     3f0:	90 e4       	ldi	r25, 0x40	; 64
+     3f2:	9b 15       	cp	r25, r11
+     3f4:	e8 f5       	brcc	.+122    	; 0x470 <__stack+0x11>
+     3f6:	c1 10       	cpse	r12, r1
+     3f8:	12 c0       	rjmp	.+36     	; 0x41e <__LOCK_REGION_LENGTH__+0x1e>
+     3fa:	3a c0       	rjmp	.+116    	; 0x470 <__stack+0x11>
+				{
+					insertMineValid(c-1,j+1) ;
+				}
+				else
+				{
+					insertEnemyValid(c-1,j+1) ;
+     3fc:	60 2f       	mov	r22, r16
+     3fe:	8b 2d       	mov	r24, r11
+     400:	0e 94 b7 00 	call	0x16e	; 0x16e <insertEnemyValid>
+     404:	40 c2       	rjmp	.+1152   	; 0x886 <__stack+0x427>
+		coltemp-- ;
+		while((i > '@') && (coltemp > 0) && (readCell(i,coltemp) != 'E') && (found == 0))
+		{
+			if (readCell(i,coltemp) == 'B')
+			{
+				found = 1 ;
+     406:	a9 2c       	mov	r10, r9
+     408:	82 34       	cpi	r24, 0x42	; 66
+     40a:	09 f0       	breq	.+2      	; 0x40e <__LOCK_REGION_LENGTH__+0xe>
+     40c:	a8 2c       	mov	r10, r8
+			}
+			i-- ;
+     40e:	fa 94       	dec	r15
+			coltemp-- ;
+     410:	ea 94       	dec	r14
+		found = 0 ;
+		i = c ;
+		coltemp = j ;
+		i-- ;
+		coltemp-- ;
+		while((i > '@') && (coltemp > 0) && (readCell(i,coltemp) != 'E') && (found == 0))
+     412:	80 e4       	ldi	r24, 0x40	; 64
+     414:	f8 16       	cp	r15, r24
+     416:	89 f0       	breq	.+34     	; 0x43a <__LOCK_REGION_LENGTH__+0x3a>
+     418:	e1 10       	cpse	r14, r1
+     41a:	07 c0       	rjmp	.+14     	; 0x42a <__LOCK_REGION_LENGTH__+0x2a>
+     41c:	0e c0       	rjmp	.+28     	; 0x43a <__LOCK_REGION_LENGTH__+0x3a>
+		found = 0 ;
+		i = c ;
+		coltemp = j ;
+		i++ ;
+		coltemp-- ;
+		while((i < 'I') && (coltemp > 0) && (found == 0) && (readCell(i,coltemp) != 'E'))
+     41e:	ec 2c       	mov	r14, r12
+     420:	fb 2c       	mov	r15, r11
+     422:	a1 2c       	mov	r10, r1
+		coltemp-- ;
+		while((i > '@') && (coltemp > 0) && (readCell(i,coltemp) != 'E') && (found == 0))
+		{
+			if (readCell(i,coltemp) == 'B')
+			{
+				found = 1 ;
+     424:	99 24       	eor	r9, r9
+     426:	93 94       	inc	r9
+     428:	81 2c       	mov	r8, r1
+		found = 0 ;
+		i = c ;
+		coltemp = j ;
+		i-- ;
+		coltemp-- ;
+		while((i > '@') && (coltemp > 0) && (readCell(i,coltemp) != 'E') && (found == 0))
+     42a:	6e 2d       	mov	r22, r14
+     42c:	8f 2d       	mov	r24, r15
+     42e:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     432:	85 34       	cpi	r24, 0x45	; 69
+     434:	11 f0       	breq	.+4      	; 0x43a <__LOCK_REGION_LENGTH__+0x3a>
+     436:	aa 20       	and	r10, r10
+     438:	31 f3       	breq	.-52     	; 0x406 <__LOCK_REGION_LENGTH__+0x6>
+				found = 1 ;
+			}
+			i-- ;
+			coltemp-- ;
+		}
+		if (found == 1 && (c+1 < 'I') && (j+1 < 9))
+     43a:	91 e0       	ldi	r25, 0x01	; 1
+     43c:	a9 12       	cpse	r10, r25
+     43e:	18 c0       	rjmp	.+48     	; 0x470 <__stack+0x11>
+     440:	8c 2f       	mov	r24, r28
+     442:	90 e0       	ldi	r25, 0x00	; 0
+     444:	01 96       	adiw	r24, 0x01	; 1
+     446:	89 34       	cpi	r24, 0x49	; 73
+     448:	91 05       	cpc	r25, r1
+     44a:	94 f4       	brge	.+36     	; 0x470 <__stack+0x11>
+     44c:	8d 2f       	mov	r24, r29
+     44e:	90 e0       	ldi	r25, 0x00	; 0
+     450:	01 96       	adiw	r24, 0x01	; 1
+     452:	09 97       	sbiw	r24, 0x09	; 9
+     454:	6c f4       	brge	.+26     	; 0x470 <__stack+0x11>
+		{
+			if (readCell(c+1,j+1) == 'E')
+     456:	60 2f       	mov	r22, r16
+     458:	81 2f       	mov	r24, r17
+     45a:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     45e:	85 34       	cpi	r24, 0x45	; 69
+     460:	39 f4       	brne	.+14     	; 0x470 <__stack+0x11>
+			{
+				/* Valid move c+1,j+1 */
+				if (player == mine)
+     462:	82 e4       	ldi	r24, 0x42	; 66
+     464:	d8 12       	cpse	r13, r24
+     466:	0a c0       	rjmp	.+20     	; 0x47c <__stack+0x1d>
+				{
+					insertMineValid(c+1,j+1) ;
+     468:	60 2f       	mov	r22, r16
+     46a:	81 2f       	mov	r24, r17
+     46c:	0e 94 a6 00 	call	0x14c	; 0x14c <insertMineValid>
+		found = 0 ;
+		i = c ;
+		coltemp = j ;
+		i++ ;
+		coltemp++ ;
+		while ((i < 'I') && (coltemp < 9) && (readCell(i,coltemp) != 'E') && (found == 0))
+     470:	19 34       	cpi	r17, 0x49	; 73
+     472:	08 f0       	brcs	.+2      	; 0x476 <__stack+0x17>
+     474:	3b c2       	rjmp	.+1142   	; 0x8ec <__stack+0x48d>
+     476:	09 30       	cpi	r16, 0x09	; 9
+     478:	88 f0       	brcs	.+34     	; 0x49c <__stack+0x3d>
+     47a:	38 c2       	rjmp	.+1136   	; 0x8ec <__stack+0x48d>
+				{
+					insertMineValid(c+1,j+1) ;
+				}
+				else
+				{
+					insertEnemyValid(c+1,j+1) ;
+     47c:	60 2f       	mov	r22, r16
+     47e:	81 2f       	mov	r24, r17
+     480:	0e 94 b7 00 	call	0x16e	; 0x16e <insertEnemyValid>
+     484:	f5 cf       	rjmp	.-22     	; 0x470 <__stack+0x11>
+		coltemp++ ;
+		while ((i < 'I') && (coltemp < 9) && (readCell(i,coltemp) != 'E') && (found == 0))
+		{
+			if (readCell(i,coltemp) == 'B')
+			{
+				found = 1 ;
+     486:	fe 2c       	mov	r15, r14
+     488:	82 34       	cpi	r24, 0x42	; 66
+     48a:	09 f0       	breq	.+2      	; 0x48e <__stack+0x2f>
+     48c:	fa 2c       	mov	r15, r10
+			}
+			i++ ;
+     48e:	1f 5f       	subi	r17, 0xFF	; 255
+			coltemp++ ;
+     490:	0f 5f       	subi	r16, 0xFF	; 255
+		found = 0 ;
+		i = c ;
+		coltemp = j ;
+		i++ ;
+		coltemp++ ;
+		while ((i < 'I') && (coltemp < 9) && (readCell(i,coltemp) != 'E') && (found == 0))
+     492:	19 34       	cpi	r17, 0x49	; 73
+     494:	79 f0       	breq	.+30     	; 0x4b4 <__stack+0x55>
+     496:	09 30       	cpi	r16, 0x09	; 9
+     498:	29 f4       	brne	.+10     	; 0x4a4 <__stack+0x45>
+     49a:	0c c0       	rjmp	.+24     	; 0x4b4 <__stack+0x55>
+     49c:	f1 2c       	mov	r15, r1
+		{
+			if (readCell(i,coltemp) == 'B')
+			{
+				found = 1 ;
+     49e:	ee 24       	eor	r14, r14
+     4a0:	e3 94       	inc	r14
+     4a2:	a1 2c       	mov	r10, r1
+		found = 0 ;
+		i = c ;
+		coltemp = j ;
+		i++ ;
+		coltemp++ ;
+		while ((i < 'I') && (coltemp < 9) && (readCell(i,coltemp) != 'E') && (found == 0))
+     4a4:	60 2f       	mov	r22, r16
+     4a6:	81 2f       	mov	r24, r17
+     4a8:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     4ac:	85 34       	cpi	r24, 0x45	; 69
+     4ae:	11 f0       	breq	.+4      	; 0x4b4 <__stack+0x55>
+     4b0:	ff 20       	and	r15, r15
+     4b2:	49 f3       	breq	.-46     	; 0x486 <__stack+0x27>
+				found = 1 ;
+			}
+			i++ ;
+			coltemp++ ;
+		}
+		if ((found == 1) && (c-1 > '@') && (j-1 > 0))
+     4b4:	91 e0       	ldi	r25, 0x01	; 1
+     4b6:	f9 12       	cpse	r15, r25
+     4b8:	19 c2       	rjmp	.+1074   	; 0x8ec <__stack+0x48d>
+     4ba:	8c 2f       	mov	r24, r28
+     4bc:	90 e0       	ldi	r25, 0x00	; 0
+     4be:	01 97       	sbiw	r24, 0x01	; 1
+     4c0:	81 34       	cpi	r24, 0x41	; 65
+     4c2:	91 05       	cpc	r25, r1
+     4c4:	0c f4       	brge	.+2      	; 0x4c8 <__stack+0x69>
+     4c6:	12 c2       	rjmp	.+1060   	; 0x8ec <__stack+0x48d>
+     4c8:	8d 2f       	mov	r24, r29
+     4ca:	90 e0       	ldi	r25, 0x00	; 0
+     4cc:	01 97       	sbiw	r24, 0x01	; 1
+     4ce:	18 16       	cp	r1, r24
+     4d0:	19 06       	cpc	r1, r25
+     4d2:	0c f0       	brlt	.+2      	; 0x4d6 <__stack+0x77>
+     4d4:	0b c2       	rjmp	.+1046   	; 0x8ec <__stack+0x48d>
+		{
+			if (readCell(c-1,j-1) == 'E')
+     4d6:	6c 2d       	mov	r22, r12
+     4d8:	8b 2d       	mov	r24, r11
+     4da:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     4de:	85 34       	cpi	r24, 0x45	; 69
+     4e0:	09 f0       	breq	.+2      	; 0x4e4 <__stack+0x85>
+     4e2:	04 c2       	rjmp	.+1032   	; 0x8ec <__stack+0x48d>
+			{
+				/* Valid pos c-1,j-1 */
+				if (player == mine)
+     4e4:	82 e4       	ldi	r24, 0x42	; 66
+     4e6:	d8 12       	cpse	r13, r24
+     4e8:	05 c0       	rjmp	.+10     	; 0x4f4 <__stack+0x95>
+				{
+					insertMineValid(c-1,j-1) ;
+     4ea:	6c 2d       	mov	r22, r12
+     4ec:	8b 2d       	mov	r24, r11
+     4ee:	0e 94 a6 00 	call	0x14c	; 0x14c <insertMineValid>
+     4f2:	fc c1       	rjmp	.+1016   	; 0x8ec <__stack+0x48d>
+				}
+				else
+				{
+					insertEnemyValid(c-1,j-1) ;
+     4f4:	6c 2d       	mov	r22, r12
+     4f6:	8b 2d       	mov	r24, r11
+     4f8:	0e 94 b7 00 	call	0x16e	; 0x16e <insertEnemyValid>
+     4fc:	f7 c1       	rjmp	.+1006   	; 0x8ec <__stack+0x48d>
+		
+		break;
+		/* check available moves for white player */
+		default:
+										/* check right of the enemy - checker for other my own checkers */
+		i++ ;
+     4fe:	01 e0       	ldi	r16, 0x01	; 1
+     500:	06 0f       	add	r16, r22
+		while (i <= 8 && found == 0 && readCell(c,i) != 'E')
+     502:	09 30       	cpi	r16, 0x09	; 9
+     504:	40 f0       	brcs	.+16     	; 0x516 <__stack+0xb7>
+     506:	22 c0       	rjmp	.+68     	; 0x54c <__stack+0xed>
+		{
+			
+			if (readCell(c,i) == 'W')
+     508:	87 35       	cpi	r24, 0x57	; 87
+     50a:	09 f4       	brne	.+2      	; 0x50e <__stack+0xaf>
+     50c:	c1 c1       	rjmp	.+898    	; 0x890 <__stack+0x431>
+			{
+				found = 1 ;
+			}
+			i++ ;
+     50e:	1f 5f       	subi	r17, 0xFF	; 255
+		break;
+		/* check available moves for white player */
+		default:
+										/* check right of the enemy - checker for other my own checkers */
+		i++ ;
+		while (i <= 8 && found == 0 && readCell(c,i) != 'E')
+     510:	19 30       	cpi	r17, 0x09	; 9
+     512:	11 f4       	brne	.+4      	; 0x518 <__stack+0xb9>
+     514:	1b c0       	rjmp	.+54     	; 0x54c <__stack+0xed>
+     516:	10 2f       	mov	r17, r16
+     518:	61 2f       	mov	r22, r17
+     51a:	8c 2f       	mov	r24, r28
+     51c:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     520:	85 34       	cpi	r24, 0x45	; 69
+     522:	91 f7       	brne	.-28     	; 0x508 <__stack+0xa9>
+     524:	13 c0       	rjmp	.+38     	; 0x54c <__stack+0xed>
+			}
+			i++ ;
+		}
+		if (found == 1 && j-1 > 0)
+		{
+			if (readCell(c,j-1) == 'E')
+     526:	1f ef       	ldi	r17, 0xFF	; 255
+     528:	1d 0f       	add	r17, r29
+     52a:	61 2f       	mov	r22, r17
+     52c:	8c 2f       	mov	r24, r28
+     52e:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     532:	85 34       	cpi	r24, 0x45	; 69
+     534:	59 f4       	brne	.+22     	; 0x54c <__stack+0xed>
+			{
+				/* Available move c, j-1 */						/* The valid move is one left */
+				if (mine == player)
+     536:	cd 10       	cpse	r12, r13
+     538:	05 c0       	rjmp	.+10     	; 0x544 <__stack+0xe5>
+				{
+					insertMineValid(c,j-1) ;
+     53a:	61 2f       	mov	r22, r17
+     53c:	8c 2f       	mov	r24, r28
+     53e:	0e 94 a6 00 	call	0x14c	; 0x14c <insertMineValid>
+     542:	04 c0       	rjmp	.+8      	; 0x54c <__stack+0xed>
+				}
+				else
+				{
+					insertEnemyValid(c,j-1) ;
+     544:	61 2f       	mov	r22, r17
+     546:	8c 2f       	mov	r24, r28
+     548:	0e 94 b7 00 	call	0x16e	; 0x16e <insertEnemyValid>
+			}
+		}
+		
+		found = 0 ;												/* check left of the enemy - checker for other my own checkers */
+		i = j ;
+		i-- ;
+     54c:	bb 24       	eor	r11, r11
+     54e:	ba 94       	dec	r11
+     550:	bd 0e       	add	r11, r29
+		while (i > 1 && found == 0 && readCell(c,i) != 'E')
+     552:	91 e0       	ldi	r25, 0x01	; 1
+     554:	9b 15       	cp	r25, r11
+     556:	40 f0       	brcs	.+16     	; 0x568 <__stack+0x109>
+     558:	20 c0       	rjmp	.+64     	; 0x59a <__stack+0x13b>
+		{
+			
+			if (readCell(c,i) == 'W')
+     55a:	87 35       	cpi	r24, 0x57	; 87
+     55c:	09 f4       	brne	.+2      	; 0x560 <__stack+0x101>
+     55e:	a0 c1       	rjmp	.+832    	; 0x8a0 <__stack+0x441>
+			{
+				found = 1 ;
+			}
+			i-- ;
+     560:	11 50       	subi	r17, 0x01	; 1
+		}
+		
+		found = 0 ;												/* check left of the enemy - checker for other my own checkers */
+		i = j ;
+		i-- ;
+		while (i > 1 && found == 0 && readCell(c,i) != 'E')
+     562:	11 30       	cpi	r17, 0x01	; 1
+     564:	11 f4       	brne	.+4      	; 0x56a <__stack+0x10b>
+     566:	19 c0       	rjmp	.+50     	; 0x59a <__stack+0x13b>
+     568:	1b 2d       	mov	r17, r11
+     56a:	61 2f       	mov	r22, r17
+     56c:	8c 2f       	mov	r24, r28
+     56e:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     572:	85 34       	cpi	r24, 0x45	; 69
+     574:	91 f7       	brne	.-28     	; 0x55a <__stack+0xfb>
+     576:	11 c0       	rjmp	.+34     	; 0x59a <__stack+0x13b>
+			i-- ;
+			
+		}
+		if (found == 1 && j+1 < 9)
+		{
+			if (readCell(c,j+1) == 'E')
+     578:	60 2f       	mov	r22, r16
+     57a:	8c 2f       	mov	r24, r28
+     57c:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     580:	85 34       	cpi	r24, 0x45	; 69
+     582:	59 f4       	brne	.+22     	; 0x59a <__stack+0x13b>
+			{
+				/* Available move c, j+1 */					/* The valid move is one right */
+				if (mine == player)
+     584:	cd 10       	cpse	r12, r13
+     586:	05 c0       	rjmp	.+10     	; 0x592 <__stack+0x133>
+				{
+					insertMineValid(c,j+1) ;
+     588:	60 2f       	mov	r22, r16
+     58a:	8c 2f       	mov	r24, r28
+     58c:	0e 94 a6 00 	call	0x14c	; 0x14c <insertMineValid>
+     590:	04 c0       	rjmp	.+8      	; 0x59a <__stack+0x13b>
+				}
+				else
+				{
+					insertEnemyValid(c,j+1) ;
+     592:	60 2f       	mov	r22, r16
+     594:	8c 2f       	mov	r24, r28
+     596:	0e 94 b7 00 	call	0x16e	; 0x16e <insertEnemyValid>
+			}
+		}
+		
+		found = 0 ;											 /* check up of the enemy - checker for other my own checkers */
+		i = c ;
+		i-- ;
+     59a:	aa 24       	eor	r10, r10
+     59c:	aa 94       	dec	r10
+     59e:	ac 0e       	add	r10, r28
+		while (i > '@' && found == 0 && readCell(i,j) != 'E')
+     5a0:	80 e4       	ldi	r24, 0x40	; 64
+     5a2:	8a 15       	cp	r24, r10
+     5a4:	40 f0       	brcs	.+16     	; 0x5b6 <__stack+0x157>
+     5a6:	8b c1       	rjmp	.+790    	; 0x8be <__stack+0x45f>
+		{
+			
+			if (readCell(i,j) == 'W')
+     5a8:	87 35       	cpi	r24, 0x57	; 87
+     5aa:	09 f4       	brne	.+2      	; 0x5ae <__stack+0x14f>
+     5ac:	80 c1       	rjmp	.+768    	; 0x8ae <__stack+0x44f>
+			{
+				found = 1 ;
+			}
+			i-- ;
+     5ae:	11 50       	subi	r17, 0x01	; 1
+		}
+		
+		found = 0 ;											 /* check up of the enemy - checker for other my own checkers */
+		i = c ;
+		i-- ;
+		while (i > '@' && found == 0 && readCell(i,j) != 'E')
+     5b0:	10 34       	cpi	r17, 0x40	; 64
+     5b2:	11 f4       	brne	.+4      	; 0x5b8 <__stack+0x159>
+     5b4:	1b c0       	rjmp	.+54     	; 0x5ec <__stack+0x18d>
+     5b6:	1a 2d       	mov	r17, r10
+     5b8:	6d 2f       	mov	r22, r29
+     5ba:	81 2f       	mov	r24, r17
+     5bc:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     5c0:	85 34       	cpi	r24, 0x45	; 69
+     5c2:	91 f7       	brne	.-28     	; 0x5a8 <__stack+0x149>
+     5c4:	13 c0       	rjmp	.+38     	; 0x5ec <__stack+0x18d>
+			}
+			i-- ;
+		}
+		if (found == 1 && c+1 < 'I')
+		{
+			if (readCell(c+1,j) == 'E')
+     5c6:	11 e0       	ldi	r17, 0x01	; 1
+     5c8:	1c 0f       	add	r17, r28
+     5ca:	6d 2f       	mov	r22, r29
+     5cc:	81 2f       	mov	r24, r17
+     5ce:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     5d2:	85 34       	cpi	r24, 0x45	; 69
+     5d4:	59 f4       	brne	.+22     	; 0x5ec <__stack+0x18d>
+			{
+				/* Valid pos c+1, j */
+				if (mine == player)
+     5d6:	cd 10       	cpse	r12, r13
+     5d8:	05 c0       	rjmp	.+10     	; 0x5e4 <__stack+0x185>
+				{
+					insertMineValid(c+1,j) ;
+     5da:	6d 2f       	mov	r22, r29
+     5dc:	81 2f       	mov	r24, r17
+     5de:	0e 94 a6 00 	call	0x14c	; 0x14c <insertMineValid>
+     5e2:	04 c0       	rjmp	.+8      	; 0x5ec <__stack+0x18d>
+				}
+				else
+				{
+					insertEnemyValid(c+1,j) ;
+     5e4:	6d 2f       	mov	r22, r29
+     5e6:	81 2f       	mov	r24, r17
+     5e8:	0e 94 b7 00 	call	0x16e	; 0x16e <insertEnemyValid>
+			}
+		}
+		
+		found = 0 ;										   /* check down of the enemy - checker for other my own checkers */
+		i = c ;
+		i++ ;
+     5ec:	11 e0       	ldi	r17, 0x01	; 1
+     5ee:	1c 0f       	add	r17, r28
+		while (i < 'I' && found == 0 && readCell(i,j) != 'E')
+     5f0:	19 34       	cpi	r17, 0x49	; 73
+     5f2:	48 f0       	brcs	.+18     	; 0x606 <__stack+0x1a7>
+     5f4:	1c c0       	rjmp	.+56     	; 0x62e <__stack+0x1cf>
+		{
+			if (readCell(i,j) == 'W')
+     5f6:	87 35       	cpi	r24, 0x57	; 87
+     5f8:	09 f4       	brne	.+2      	; 0x5fc <__stack+0x19d>
+     5fa:	67 c1       	rjmp	.+718    	; 0x8ca <__stack+0x46b>
+			{
+				found = 1 ;
+			}
+			i++ ;
+     5fc:	f3 94       	inc	r15
+		}
+		
+		found = 0 ;										   /* check down of the enemy - checker for other my own checkers */
+		i = c ;
+		i++ ;
+		while (i < 'I' && found == 0 && readCell(i,j) != 'E')
+     5fe:	99 e4       	ldi	r25, 0x49	; 73
+     600:	f9 12       	cpse	r15, r25
+     602:	02 c0       	rjmp	.+4      	; 0x608 <__stack+0x1a9>
+     604:	14 c0       	rjmp	.+40     	; 0x62e <__stack+0x1cf>
+		}
+		
+		found = 0 ;											 /* check up of the enemy - checker for other my own checkers */
+		i = c ;
+		i-- ;
+		while (i > '@' && found == 0 && readCell(i,j) != 'E')
+     606:	f1 2e       	mov	r15, r17
+		}
+		
+		found = 0 ;										   /* check down of the enemy - checker for other my own checkers */
+		i = c ;
+		i++ ;
+		while (i < 'I' && found == 0 && readCell(i,j) != 'E')
+     608:	6d 2f       	mov	r22, r29
+     60a:	8f 2d       	mov	r24, r15
+     60c:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     610:	85 34       	cpi	r24, 0x45	; 69
+     612:	89 f7       	brne	.-30     	; 0x5f6 <__stack+0x197>
+     614:	0c c0       	rjmp	.+24     	; 0x62e <__stack+0x1cf>
+			}
+			i++ ;
+		}
+		if (found == 1 && c - 1 > '@')
+		{
+			if (readCell(c-1,j) == 'E')
+     616:	6d 2f       	mov	r22, r29
+     618:	8a 2d       	mov	r24, r10
+     61a:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     61e:	85 34       	cpi	r24, 0x45	; 69
+     620:	31 f4       	brne	.+12     	; 0x62e <__stack+0x1cf>
+			{
+				/* Valid pos c-1,j */
+				if (mine == player)
+     622:	cd 10       	cpse	r12, r13
+     624:	0a c0       	rjmp	.+20     	; 0x63a <__stack+0x1db>
+				{
+					insertMineValid(c-1,j) ;
+     626:	6d 2f       	mov	r22, r29
+     628:	8a 2d       	mov	r24, r10
+     62a:	0e 94 a6 00 	call	0x14c	; 0x14c <insertMineValid>
+		/* check main diagonal up */
+		found = 0 ;
+		i = c ;
+		i-- ;
+		coltemp++ ;
+		while (i > '@' && coltemp < 9 && (readCell(i,coltemp) != 'E') && found == 0)
+     62e:	80 e4       	ldi	r24, 0x40	; 64
+     630:	8a 15       	cp	r24, r10
+     632:	f0 f5       	brcc	.+124    	; 0x6b0 <__stack+0x251>
+     634:	09 30       	cpi	r16, 0x09	; 9
+     636:	98 f0       	brcs	.+38     	; 0x65e <__stack+0x1ff>
+     638:	3b c0       	rjmp	.+118    	; 0x6b0 <__stack+0x251>
+				{
+					insertMineValid(c-1,j) ;
+				}
+				else
+				{
+					insertEnemyValid(c-1,j) ;
+     63a:	6d 2f       	mov	r22, r29
+     63c:	8a 2d       	mov	r24, r10
+     63e:	0e 94 b7 00 	call	0x16e	; 0x16e <insertEnemyValid>
+     642:	f5 cf       	rjmp	.-22     	; 0x62e <__stack+0x1cf>
+		coltemp++ ;
+		while (i > '@' && coltemp < 9 && (readCell(i,coltemp) != 'E') && found == 0)
+		{
+			if (readCell(i,coltemp) == 'W')
+			{
+				found = 1 ;
+     644:	98 2c       	mov	r9, r8
+     646:	87 35       	cpi	r24, 0x57	; 87
+     648:	09 f0       	breq	.+2      	; 0x64c <__stack+0x1ed>
+     64a:	97 2c       	mov	r9, r7
+			}
+			i-- ;
+     64c:	fa 94       	dec	r15
+			coltemp++ ;
+     64e:	e3 94       	inc	r14
+		/* check main diagonal up */
+		found = 0 ;
+		i = c ;
+		i-- ;
+		coltemp++ ;
+		while (i > '@' && coltemp < 9 && (readCell(i,coltemp) != 'E') && found == 0)
+     650:	90 e4       	ldi	r25, 0x40	; 64
+     652:	f9 16       	cp	r15, r25
+     654:	91 f0       	breq	.+36     	; 0x67a <__stack+0x21b>
+     656:	89 e0       	ldi	r24, 0x09	; 9
+     658:	e8 12       	cpse	r14, r24
+     65a:	07 c0       	rjmp	.+14     	; 0x66a <__stack+0x20b>
+     65c:	0e c0       	rjmp	.+28     	; 0x67a <__stack+0x21b>
+     65e:	e0 2e       	mov	r14, r16
+     660:	fa 2c       	mov	r15, r10
+     662:	91 2c       	mov	r9, r1
+		{
+			if (readCell(i,coltemp) == 'W')
+			{
+				found = 1 ;
+     664:	88 24       	eor	r8, r8
+     666:	83 94       	inc	r8
+     668:	71 2c       	mov	r7, r1
+		/* check main diagonal up */
+		found = 0 ;
+		i = c ;
+		i-- ;
+		coltemp++ ;
+		while (i > '@' && coltemp < 9 && (readCell(i,coltemp) != 'E') && found == 0)
+     66a:	6e 2d       	mov	r22, r14
+     66c:	8f 2d       	mov	r24, r15
+     66e:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     672:	85 34       	cpi	r24, 0x45	; 69
+     674:	11 f0       	breq	.+4      	; 0x67a <__stack+0x21b>
+     676:	99 20       	and	r9, r9
+     678:	29 f3       	breq	.-54     	; 0x644 <__stack+0x1e5>
+				found = 1 ;
+			}
+			i-- ;
+			coltemp++ ;
+		}
+		if (found == 1 && (c+1 < 'I') && (j-1 > 0))
+     67a:	91 e0       	ldi	r25, 0x01	; 1
+     67c:	99 12       	cpse	r9, r25
+     67e:	18 c0       	rjmp	.+48     	; 0x6b0 <__stack+0x251>
+     680:	8c 2f       	mov	r24, r28
+     682:	90 e0       	ldi	r25, 0x00	; 0
+     684:	01 96       	adiw	r24, 0x01	; 1
+     686:	89 34       	cpi	r24, 0x49	; 73
+     688:	91 05       	cpc	r25, r1
+     68a:	94 f4       	brge	.+36     	; 0x6b0 <__stack+0x251>
+     68c:	8d 2f       	mov	r24, r29
+     68e:	90 e0       	ldi	r25, 0x00	; 0
+     690:	01 97       	sbiw	r24, 0x01	; 1
+     692:	18 16       	cp	r1, r24
+     694:	19 06       	cpc	r1, r25
+     696:	64 f4       	brge	.+24     	; 0x6b0 <__stack+0x251>
+		{
+			if (readCell(c+1,j-1) == 'E')
+     698:	6b 2d       	mov	r22, r11
+     69a:	81 2f       	mov	r24, r17
+     69c:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     6a0:	85 34       	cpi	r24, 0x45	; 69
+     6a2:	31 f4       	brne	.+12     	; 0x6b0 <__stack+0x251>
+			{
+				/* Valid pos c+1,j-1 */
+				if (mine == player)
+     6a4:	cd 10       	cpse	r12, r13
+     6a6:	0a c0       	rjmp	.+20     	; 0x6bc <__stack+0x25d>
+				{
+					insertMineValid(c+1,j-1) ;
+     6a8:	6b 2d       	mov	r22, r11
+     6aa:	81 2f       	mov	r24, r17
+     6ac:	0e 94 a6 00 	call	0x14c	; 0x14c <insertMineValid>
+		found = 0 ;
+		i = c ;
+		coltemp = j ;
+		i++ ;
+		coltemp-- ;
+		while((i < 'I') && (coltemp > 0) && (found == 0) && (readCell(i,coltemp) != 'E'))
+     6b0:	19 34       	cpi	r17, 0x49	; 73
+     6b2:	08 f0       	brcs	.+2      	; 0x6b6 <__stack+0x257>
+     6b4:	17 c1       	rjmp	.+558    	; 0x8e4 <__stack+0x485>
+     6b6:	b1 10       	cpse	r11, r1
+     6b8:	10 c0       	rjmp	.+32     	; 0x6da <__stack+0x27b>
+     6ba:	75 c0       	rjmp	.+234    	; 0x7a6 <__stack+0x347>
+				{
+					insertMineValid(c+1,j-1) ;
+				}
+				else
+				{
+					insertEnemyValid(c+1,j-1) ;
+     6bc:	6b 2d       	mov	r22, r11
+     6be:	81 2f       	mov	r24, r17
+     6c0:	0e 94 b7 00 	call	0x16e	; 0x16e <insertEnemyValid>
+     6c4:	f5 cf       	rjmp	.-22     	; 0x6b0 <__stack+0x251>
+		{
+			if (readCell(i,coltemp) == 'W')
+			{
+				found = 1 ;
+			}
+			i++ ;
+     6c6:	f3 94       	inc	r15
+			coltemp-- ;
+     6c8:	ea 94       	dec	r14
+		found = 0 ;
+		i = c ;
+		coltemp = j ;
+		i++ ;
+		coltemp-- ;
+		while((i < 'I') && (coltemp > 0) && (found == 0) && (readCell(i,coltemp) != 'E'))
+     6ca:	99 e4       	ldi	r25, 0x49	; 73
+     6cc:	f9 16       	cp	r15, r25
+     6ce:	71 f0       	breq	.+28     	; 0x6ec <__stack+0x28d>
+     6d0:	ee 20       	and	r14, r14
+     6d2:	61 f0       	breq	.+24     	; 0x6ec <__stack+0x28d>
+     6d4:	87 35       	cpi	r24, 0x57	; 87
+     6d6:	19 f4       	brne	.+6      	; 0x6de <__stack+0x27f>
+     6d8:	09 c0       	rjmp	.+18     	; 0x6ec <__stack+0x28d>
+     6da:	eb 2c       	mov	r14, r11
+     6dc:	f1 2e       	mov	r15, r17
+     6de:	6e 2d       	mov	r22, r14
+     6e0:	8f 2d       	mov	r24, r15
+     6e2:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     6e6:	85 34       	cpi	r24, 0x45	; 69
+     6e8:	71 f7       	brne	.-36     	; 0x6c6 <__stack+0x267>
+     6ea:	1e c0       	rjmp	.+60     	; 0x728 <__stack+0x2c9>
+				found = 1 ;
+			}
+			i++ ;
+			coltemp-- ;
+		}
+		if (found == 1 && (c-1 > '@') && (j+1 < 9))
+     6ec:	87 35       	cpi	r24, 0x57	; 87
+     6ee:	09 f0       	breq	.+2      	; 0x6f2 <__stack+0x293>
+     6f0:	f4 c0       	rjmp	.+488    	; 0x8da <__stack+0x47b>
+     6f2:	8c 2f       	mov	r24, r28
+     6f4:	90 e0       	ldi	r25, 0x00	; 0
+     6f6:	01 97       	sbiw	r24, 0x01	; 1
+     6f8:	81 34       	cpi	r24, 0x41	; 65
+     6fa:	91 05       	cpc	r25, r1
+     6fc:	0c f4       	brge	.+2      	; 0x700 <__stack+0x2a1>
+     6fe:	ed c0       	rjmp	.+474    	; 0x8da <__stack+0x47b>
+     700:	8d 2f       	mov	r24, r29
+     702:	90 e0       	ldi	r25, 0x00	; 0
+     704:	01 96       	adiw	r24, 0x01	; 1
+     706:	09 97       	sbiw	r24, 0x09	; 9
+     708:	0c f0       	brlt	.+2      	; 0x70c <__stack+0x2ad>
+     70a:	e7 c0       	rjmp	.+462    	; 0x8da <__stack+0x47b>
+		{
+			if (readCell(c-1,j+1) == 'E')
+     70c:	60 2f       	mov	r22, r16
+     70e:	8a 2d       	mov	r24, r10
+     710:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     714:	85 34       	cpi	r24, 0x45	; 69
+     716:	09 f0       	breq	.+2      	; 0x71a <__stack+0x2bb>
+     718:	e0 c0       	rjmp	.+448    	; 0x8da <__stack+0x47b>
+			{
+				/* Valid pos c-1, j+1 */
+				if (player == mine)
+     71a:	cd 10       	cpse	r12, r13
+     71c:	0b c0       	rjmp	.+22     	; 0x734 <__stack+0x2d5>
+				{
+					insertMineValid(c-1,j+1) ;
+     71e:	60 2f       	mov	r22, r16
+     720:	8a 2d       	mov	r24, r10
+     722:	0e 94 a6 00 	call	0x14c	; 0x14c <insertMineValid>
+     726:	d9 c0       	rjmp	.+434    	; 0x8da <__stack+0x47b>
+		found = 0 ;
+		i = c ;
+		coltemp = j ;
+		i-- ;
+		coltemp-- ;
+		while((i > '@') && (coltemp > 0) && (readCell(i,coltemp) != 'E') && (found == 0))
+     728:	80 e4       	ldi	r24, 0x40	; 64
+     72a:	8a 15       	cp	r24, r10
+     72c:	e0 f5       	brcc	.+120    	; 0x7a6 <__stack+0x347>
+     72e:	b1 10       	cpse	r11, r1
+     730:	12 c0       	rjmp	.+36     	; 0x756 <__stack+0x2f7>
+     732:	39 c0       	rjmp	.+114    	; 0x7a6 <__stack+0x347>
+				{
+					insertMineValid(c-1,j+1) ;
+				}
+				else
+				{
+					insertEnemyValid(c-1,j+1) ;
+     734:	60 2f       	mov	r22, r16
+     736:	8a 2d       	mov	r24, r10
+     738:	0e 94 b7 00 	call	0x16e	; 0x16e <insertEnemyValid>
+     73c:	ce c0       	rjmp	.+412    	; 0x8da <__stack+0x47b>
+		coltemp-- ;
+		while((i > '@') && (coltemp > 0) && (readCell(i,coltemp) != 'E') && (found == 0))
+		{
+			if (readCell(i,coltemp) == 'W')
+			{
+				found = 1 ;
+     73e:	98 2c       	mov	r9, r8
+     740:	87 35       	cpi	r24, 0x57	; 87
+     742:	09 f0       	breq	.+2      	; 0x746 <__stack+0x2e7>
+     744:	97 2c       	mov	r9, r7
+			}
+			i-- ;
+     746:	fa 94       	dec	r15
+			coltemp-- ;
+     748:	ea 94       	dec	r14
+		found = 0 ;
+		i = c ;
+		coltemp = j ;
+		i-- ;
+		coltemp-- ;
+		while((i > '@') && (coltemp > 0) && (readCell(i,coltemp) != 'E') && (found == 0))
+     74a:	90 e4       	ldi	r25, 0x40	; 64
+     74c:	f9 16       	cp	r15, r25
+     74e:	89 f0       	breq	.+34     	; 0x772 <__stack+0x313>
+     750:	e1 10       	cpse	r14, r1
+     752:	07 c0       	rjmp	.+14     	; 0x762 <__stack+0x303>
+     754:	0e c0       	rjmp	.+28     	; 0x772 <__stack+0x313>
+		found = 0 ;
+		i = c ;
+		coltemp = j ;
+		i++ ;
+		coltemp-- ;
+		while((i < 'I') && (coltemp > 0) && (found == 0) && (readCell(i,coltemp) != 'E'))
+     756:	eb 2c       	mov	r14, r11
+     758:	fa 2c       	mov	r15, r10
+     75a:	91 2c       	mov	r9, r1
+		coltemp-- ;
+		while((i > '@') && (coltemp > 0) && (readCell(i,coltemp) != 'E') && (found == 0))
+		{
+			if (readCell(i,coltemp) == 'W')
+			{
+				found = 1 ;
+     75c:	88 24       	eor	r8, r8
+     75e:	83 94       	inc	r8
+     760:	71 2c       	mov	r7, r1
+		found = 0 ;
+		i = c ;
+		coltemp = j ;
+		i-- ;
+		coltemp-- ;
+		while((i > '@') && (coltemp > 0) && (readCell(i,coltemp) != 'E') && (found == 0))
+     762:	6e 2d       	mov	r22, r14
+     764:	8f 2d       	mov	r24, r15
+     766:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     76a:	85 34       	cpi	r24, 0x45	; 69
+     76c:	11 f0       	breq	.+4      	; 0x772 <__stack+0x313>
+     76e:	99 20       	and	r9, r9
+     770:	31 f3       	breq	.-52     	; 0x73e <__stack+0x2df>
+				found = 1 ;
+			}
+			i-- ;
+			coltemp-- ;
+		}
+		if (found == 1 && (c+1 < 'I') && (j+1 < 9))
+     772:	81 e0       	ldi	r24, 0x01	; 1
+     774:	98 12       	cpse	r9, r24
+     776:	17 c0       	rjmp	.+46     	; 0x7a6 <__stack+0x347>
+     778:	8c 2f       	mov	r24, r28
+     77a:	90 e0       	ldi	r25, 0x00	; 0
+     77c:	01 96       	adiw	r24, 0x01	; 1
+     77e:	89 34       	cpi	r24, 0x49	; 73
+     780:	91 05       	cpc	r25, r1
+     782:	8c f4       	brge	.+34     	; 0x7a6 <__stack+0x347>
+     784:	8d 2f       	mov	r24, r29
+     786:	90 e0       	ldi	r25, 0x00	; 0
+     788:	01 96       	adiw	r24, 0x01	; 1
+     78a:	09 97       	sbiw	r24, 0x09	; 9
+     78c:	64 f4       	brge	.+24     	; 0x7a6 <__stack+0x347>
+		{
+			if (readCell(c+1,j+1) == 'E')
+     78e:	60 2f       	mov	r22, r16
+     790:	81 2f       	mov	r24, r17
+     792:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     796:	85 34       	cpi	r24, 0x45	; 69
+     798:	31 f4       	brne	.+12     	; 0x7a6 <__stack+0x347>
+			{
+				/* Valid move c+1,j+1 */
+				if (player == mine)
+     79a:	cd 10       	cpse	r12, r13
+     79c:	0a c0       	rjmp	.+20     	; 0x7b2 <__stack+0x353>
+				{
+					insertMineValid(c+1,j+1) ;
+     79e:	60 2f       	mov	r22, r16
+     7a0:	81 2f       	mov	r24, r17
+     7a2:	0e 94 a6 00 	call	0x14c	; 0x14c <insertMineValid>
+		found = 0 ;
+		i = c ;
+		coltemp = j ;
+		i++ ;
+		coltemp++ ;
+		while ((i < 'I') && (coltemp < 9) && (readCell(i,coltemp) != 'E') && (found == 0))
+     7a6:	19 34       	cpi	r17, 0x49	; 73
+     7a8:	08 f0       	brcs	.+2      	; 0x7ac <__stack+0x34d>
+     7aa:	a0 c0       	rjmp	.+320    	; 0x8ec <__stack+0x48d>
+     7ac:	09 30       	cpi	r16, 0x09	; 9
+     7ae:	88 f0       	brcs	.+34     	; 0x7d2 <__stack+0x373>
+     7b0:	9d c0       	rjmp	.+314    	; 0x8ec <__stack+0x48d>
+				{
+					insertMineValid(c+1,j+1) ;
+				}
+				else
+				{
+					insertEnemyValid(c+1,j+1) ;
+     7b2:	60 2f       	mov	r22, r16
+     7b4:	81 2f       	mov	r24, r17
+     7b6:	0e 94 b7 00 	call	0x16e	; 0x16e <insertEnemyValid>
+     7ba:	f5 cf       	rjmp	.-22     	; 0x7a6 <__stack+0x347>
+		coltemp++ ;
+		while ((i < 'I') && (coltemp < 9) && (readCell(i,coltemp) != 'E') && (found == 0))
+		{
+			if (readCell(i,coltemp) == 'W')
+			{
+				found = 1 ;
+     7bc:	fe 2c       	mov	r15, r14
+     7be:	87 35       	cpi	r24, 0x57	; 87
+     7c0:	09 f0       	breq	.+2      	; 0x7c4 <__stack+0x365>
+     7c2:	f9 2c       	mov	r15, r9
+			}
+			i++ ;
+     7c4:	1f 5f       	subi	r17, 0xFF	; 255
+			coltemp++ ;
+     7c6:	0f 5f       	subi	r16, 0xFF	; 255
+		found = 0 ;
+		i = c ;
+		coltemp = j ;
+		i++ ;
+		coltemp++ ;
+		while ((i < 'I') && (coltemp < 9) && (readCell(i,coltemp) != 'E') && (found == 0))
+     7c8:	19 34       	cpi	r17, 0x49	; 73
+     7ca:	79 f0       	breq	.+30     	; 0x7ea <__stack+0x38b>
+     7cc:	09 30       	cpi	r16, 0x09	; 9
+     7ce:	29 f4       	brne	.+10     	; 0x7da <__stack+0x37b>
+     7d0:	0c c0       	rjmp	.+24     	; 0x7ea <__stack+0x38b>
+     7d2:	f1 2c       	mov	r15, r1
+		{
+			if (readCell(i,coltemp) == 'W')
+			{
+				found = 1 ;
+     7d4:	ee 24       	eor	r14, r14
+     7d6:	e3 94       	inc	r14
+     7d8:	91 2c       	mov	r9, r1
+		found = 0 ;
+		i = c ;
+		coltemp = j ;
+		i++ ;
+		coltemp++ ;
+		while ((i < 'I') && (coltemp < 9) && (readCell(i,coltemp) != 'E') && (found == 0))
+     7da:	60 2f       	mov	r22, r16
+     7dc:	81 2f       	mov	r24, r17
+     7de:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     7e2:	85 34       	cpi	r24, 0x45	; 69
+     7e4:	11 f0       	breq	.+4      	; 0x7ea <__stack+0x38b>
+     7e6:	ff 20       	and	r15, r15
+     7e8:	49 f3       	breq	.-46     	; 0x7bc <__stack+0x35d>
+				found = 1 ;
+			}
+			i++ ;
+			coltemp++ ;
+		}
+		if ((found == 1) && (c-1 > '@') && (j-1 > 0))
+     7ea:	91 e0       	ldi	r25, 0x01	; 1
+     7ec:	f9 12       	cpse	r15, r25
+     7ee:	7e c0       	rjmp	.+252    	; 0x8ec <__stack+0x48d>
+     7f0:	8c 2f       	mov	r24, r28
+     7f2:	90 e0       	ldi	r25, 0x00	; 0
+     7f4:	01 97       	sbiw	r24, 0x01	; 1
+     7f6:	81 34       	cpi	r24, 0x41	; 65
+     7f8:	91 05       	cpc	r25, r1
+     7fa:	0c f4       	brge	.+2      	; 0x7fe <__stack+0x39f>
+     7fc:	77 c0       	rjmp	.+238    	; 0x8ec <__stack+0x48d>
+     7fe:	8d 2f       	mov	r24, r29
+     800:	90 e0       	ldi	r25, 0x00	; 0
+     802:	01 97       	sbiw	r24, 0x01	; 1
+     804:	18 16       	cp	r1, r24
+     806:	19 06       	cpc	r1, r25
+     808:	0c f0       	brlt	.+2      	; 0x80c <__stack+0x3ad>
+     80a:	70 c0       	rjmp	.+224    	; 0x8ec <__stack+0x48d>
+		{
+			if (readCell(c-1,j-1) == 'E')
+     80c:	6b 2d       	mov	r22, r11
+     80e:	8a 2d       	mov	r24, r10
+     810:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     814:	85 34       	cpi	r24, 0x45	; 69
+     816:	09 f0       	breq	.+2      	; 0x81a <__stack+0x3bb>
+     818:	69 c0       	rjmp	.+210    	; 0x8ec <__stack+0x48d>
+			{
+				/* Valid pos c-1,j-1 */
+				if (player == mine)
+     81a:	cd 10       	cpse	r12, r13
+     81c:	05 c0       	rjmp	.+10     	; 0x828 <__stack+0x3c9>
+				{
+					insertMineValid(c-1,j-1) ;
+     81e:	6b 2d       	mov	r22, r11
+     820:	8a 2d       	mov	r24, r10
+     822:	0e 94 a6 00 	call	0x14c	; 0x14c <insertMineValid>
+     826:	62 c0       	rjmp	.+196    	; 0x8ec <__stack+0x48d>
+				}
+				else
+				{
+					insertEnemyValid(c-1,j-1) ;
+     828:	6b 2d       	mov	r22, r11
+     82a:	8a 2d       	mov	r24, r10
+     82c:	0e 94 b7 00 	call	0x16e	; 0x16e <insertEnemyValid>
+		break;
+		
+	}
+		
+	
+}
+     830:	5d c0       	rjmp	.+186    	; 0x8ec <__stack+0x48d>
+			{
+				found = 1 ;
+			}
+			i++ ;
+		}
+		if (found == 1 && j-1 > 0)
+     832:	8d 2f       	mov	r24, r29
+     834:	90 e0       	ldi	r25, 0x00	; 0
+     836:	01 97       	sbiw	r24, 0x01	; 1
+     838:	18 16       	cp	r1, r24
+     83a:	19 06       	cpc	r1, r25
+     83c:	0c f4       	brge	.+2      	; 0x840 <__stack+0x3e1>
+     83e:	d0 cc       	rjmp	.-1632   	; 0x1e0 <checkAvailable+0x50>
+     840:	e3 cc       	rjmp	.-1594   	; 0x208 <checkAvailable+0x78>
+				found = 1 ;
+			}
+			i-- ;
+		
+		}
+		if (found == 1 && j+1 < 9)
+     842:	8d 2f       	mov	r24, r29
+     844:	90 e0       	ldi	r25, 0x00	; 0
+     846:	01 96       	adiw	r24, 0x01	; 1
+     848:	09 97       	sbiw	r24, 0x09	; 9
+     84a:	0c f4       	brge	.+2      	; 0x84e <__stack+0x3ef>
+     84c:	f3 cc       	rjmp	.-1562   	; 0x234 <checkAvailable+0xa4>
+     84e:	04 cd       	rjmp	.-1528   	; 0x258 <checkAvailable+0xc8>
+			{
+				found = 1 ;
+			}
+			i-- ;
+		}
+		if (found == 1 && c+1 < 'I')
+     850:	8c 2f       	mov	r24, r28
+     852:	90 e0       	ldi	r25, 0x00	; 0
+     854:	01 96       	adiw	r24, 0x01	; 1
+     856:	89 34       	cpi	r24, 0x49	; 73
+     858:	91 05       	cpc	r25, r1
+     85a:	0c f4       	brge	.+2      	; 0x85e <__stack+0x3ff>
+     85c:	13 cd       	rjmp	.-1498   	; 0x284 <checkAvailable+0xf4>
+     85e:	26 cd       	rjmp	.-1460   	; 0x2ac <checkAvailable+0x11c>
+			}
+		}
+	
+		found = 0 ;										   /* check down of the enemy - checker for other my own checkers */
+		i = c ;
+		i++ ;
+     860:	11 e0       	ldi	r17, 0x01	; 1
+     862:	1c 0f       	add	r17, r28
+		while (i < 'I' && found == 0 && readCell(i,j) != 'E')
+     864:	19 34       	cpi	r17, 0x49	; 73
+     866:	08 f4       	brcc	.+2      	; 0x86a <__stack+0x40b>
+     868:	2e cd       	rjmp	.-1444   	; 0x2c6 <checkAvailable+0x136>
+     86a:	85 cd       	rjmp	.-1270   	; 0x376 <checkAvailable+0x1e6>
+			{
+				found = 1 ;
+			}
+			i++ ;
+		}
+		if (found == 1 && c - 1 > '@')
+     86c:	8c 2f       	mov	r24, r28
+     86e:	90 e0       	ldi	r25, 0x00	; 0
+     870:	01 97       	sbiw	r24, 0x01	; 1
+     872:	81 34       	cpi	r24, 0x41	; 65
+     874:	91 05       	cpc	r25, r1
+     876:	0c f0       	brlt	.+2      	; 0x87a <__stack+0x41b>
+     878:	2e cd       	rjmp	.-1444   	; 0x2d6 <checkAvailable+0x146>
+     87a:	3a cd       	rjmp	.-1420   	; 0x2f0 <checkAvailable+0x160>
+		found = 0 ;
+		i = c ;
+		coltemp = j ;
+		i-- ;
+		coltemp-- ;
+		while((i > '@') && (coltemp > 0) && (readCell(i,coltemp) != 'E') && (found == 0))
+     87c:	80 e4       	ldi	r24, 0x40	; 64
+     87e:	8b 15       	cp	r24, r11
+     880:	08 f4       	brcc	.+2      	; 0x884 <__stack+0x425>
+     882:	b9 cd       	rjmp	.-1166   	; 0x3f6 <checkAvailable+0x266>
+     884:	33 c0       	rjmp	.+102    	; 0x8ec <__stack+0x48d>
+     886:	90 e4       	ldi	r25, 0x40	; 64
+     888:	9b 15       	cp	r25, r11
+     88a:	08 f4       	brcc	.+2      	; 0x88e <__stack+0x42f>
+     88c:	c8 cd       	rjmp	.-1136   	; 0x41e <__LOCK_REGION_LENGTH__+0x1e>
+     88e:	f0 cd       	rjmp	.-1056   	; 0x470 <__stack+0x11>
+			{
+				found = 1 ;
+			}
+			i++ ;
+		}
+		if (found == 1 && j-1 > 0)
+     890:	8d 2f       	mov	r24, r29
+     892:	90 e0       	ldi	r25, 0x00	; 0
+     894:	01 97       	sbiw	r24, 0x01	; 1
+     896:	18 16       	cp	r1, r24
+     898:	19 06       	cpc	r1, r25
+     89a:	0c f4       	brge	.+2      	; 0x89e <__stack+0x43f>
+     89c:	44 ce       	rjmp	.-888    	; 0x526 <__stack+0xc7>
+     89e:	56 ce       	rjmp	.-852    	; 0x54c <__stack+0xed>
+				found = 1 ;
+			}
+			i-- ;
+			
+		}
+		if (found == 1 && j+1 < 9)
+     8a0:	8d 2f       	mov	r24, r29
+     8a2:	90 e0       	ldi	r25, 0x00	; 0
+     8a4:	01 96       	adiw	r24, 0x01	; 1
+     8a6:	09 97       	sbiw	r24, 0x09	; 9
+     8a8:	0c f4       	brge	.+2      	; 0x8ac <__stack+0x44d>
+     8aa:	66 ce       	rjmp	.-820    	; 0x578 <__stack+0x119>
+     8ac:	76 ce       	rjmp	.-788    	; 0x59a <__stack+0x13b>
+			{
+				found = 1 ;
+			}
+			i-- ;
+		}
+		if (found == 1 && c+1 < 'I')
+     8ae:	8c 2f       	mov	r24, r28
+     8b0:	90 e0       	ldi	r25, 0x00	; 0
+     8b2:	01 96       	adiw	r24, 0x01	; 1
+     8b4:	89 34       	cpi	r24, 0x49	; 73
+     8b6:	91 05       	cpc	r25, r1
+     8b8:	0c f4       	brge	.+2      	; 0x8bc <__stack+0x45d>
+     8ba:	85 ce       	rjmp	.-758    	; 0x5c6 <__stack+0x167>
+     8bc:	97 ce       	rjmp	.-722    	; 0x5ec <__stack+0x18d>
+			}
+		}
+		
+		found = 0 ;										   /* check down of the enemy - checker for other my own checkers */
+		i = c ;
+		i++ ;
+     8be:	11 e0       	ldi	r17, 0x01	; 1
+     8c0:	1c 0f       	add	r17, r28
+		while (i < 'I' && found == 0 && readCell(i,j) != 'E')
+     8c2:	19 34       	cpi	r17, 0x49	; 73
+     8c4:	08 f4       	brcc	.+2      	; 0x8c8 <__stack+0x469>
+     8c6:	9f ce       	rjmp	.-706    	; 0x606 <__stack+0x1a7>
+     8c8:	f3 ce       	rjmp	.-538    	; 0x6b0 <__stack+0x251>
+			{
+				found = 1 ;
+			}
+			i++ ;
+		}
+		if (found == 1 && c - 1 > '@')
+     8ca:	8c 2f       	mov	r24, r28
+     8cc:	90 e0       	ldi	r25, 0x00	; 0
+     8ce:	01 97       	sbiw	r24, 0x01	; 1
+     8d0:	81 34       	cpi	r24, 0x41	; 65
+     8d2:	91 05       	cpc	r25, r1
+     8d4:	0c f0       	brlt	.+2      	; 0x8d8 <__stack+0x479>
+     8d6:	9f ce       	rjmp	.-706    	; 0x616 <__stack+0x1b7>
+     8d8:	aa ce       	rjmp	.-684    	; 0x62e <__stack+0x1cf>
+		found = 0 ;
+		i = c ;
+		coltemp = j ;
+		i-- ;
+		coltemp-- ;
+		while((i > '@') && (coltemp > 0) && (readCell(i,coltemp) != 'E') && (found == 0))
+     8da:	80 e4       	ldi	r24, 0x40	; 64
+     8dc:	8a 15       	cp	r24, r10
+     8de:	08 f4       	brcc	.+2      	; 0x8e2 <__stack+0x483>
+     8e0:	3a cf       	rjmp	.-396    	; 0x756 <__stack+0x2f7>
+     8e2:	61 cf       	rjmp	.-318    	; 0x7a6 <__stack+0x347>
+     8e4:	90 e4       	ldi	r25, 0x40	; 64
+     8e6:	9a 15       	cp	r25, r10
+     8e8:	08 f4       	brcc	.+2      	; 0x8ec <__stack+0x48d>
+     8ea:	21 cf       	rjmp	.-446    	; 0x72e <__stack+0x2cf>
+		break;
+		
+	}
+		
+	
+}
+     8ec:	df 91       	pop	r29
+     8ee:	cf 91       	pop	r28
+     8f0:	1f 91       	pop	r17
+     8f2:	0f 91       	pop	r16
+     8f4:	ff 90       	pop	r15
+     8f6:	ef 90       	pop	r14
+     8f8:	df 90       	pop	r13
+     8fa:	cf 90       	pop	r12
+     8fc:	bf 90       	pop	r11
+     8fe:	af 90       	pop	r10
+     900:	9f 90       	pop	r9
+     902:	8f 90       	pop	r8
+     904:	7f 90       	pop	r7
+     906:	08 95       	ret
+
+00000908 <scanChessboard>:
+	}
+	return retC ;
+}
+
+uint8_t scanChessboard(char mine)								/* This function scans the whole chessboard for white checkers */
+{
+     908:	4f 92       	push	r4
+     90a:	5f 92       	push	r5
+     90c:	6f 92       	push	r6
+     90e:	7f 92       	push	r7
+     910:	8f 92       	push	r8
+     912:	9f 92       	push	r9
+     914:	af 92       	push	r10
+     916:	bf 92       	push	r11
+     918:	cf 92       	push	r12
+     91a:	df 92       	push	r13
+     91c:	ef 92       	push	r14
+     91e:	ff 92       	push	r15
+     920:	0f 93       	push	r16
+     922:	1f 93       	push	r17
+     924:	cf 93       	push	r28
+     926:	df 93       	push	r29
+     928:	08 2f       	mov	r16, r24
+     92a:	0f 2e       	mov	r0, r31
+     92c:	f4 e7       	ldi	r31, 0x74	; 116
+     92e:	ef 2e       	mov	r14, r31
+     930:	f0 e0       	ldi	r31, 0x00	; 0
+     932:	ff 2e       	mov	r15, r31
+     934:	f0 2d       	mov	r31, r0
+	char c = 0 ;											/* For every one white checker checks for my available moves */
+	uint8_t j = 0 ;											/* and stores them in a parallel memory board the validtable */
+	uint8_t buffer = 0 ;
+	uint8_t temp = 0 ;
+	uint8_t count = 0 ;
+	for (uint8_t index = 0; index < SIZE ; index++)
+     936:	10 e0       	ldi	r17, 0x00	; 0
+{
+	char c = 0 ;											/* For every one white checker checks for my available moves */
+	uint8_t j = 0 ;											/* and stores them in a parallel memory board the validtable */
+	uint8_t buffer = 0 ;
+	uint8_t temp = 0 ;
+	uint8_t count = 0 ;
+     938:	c1 2c       	mov	r12, r1
+		c = 65 + (index >> 1) ;								/* Convert the index into specific ascii that we want to scan */
+		buffer = table[index] ;								/* Read the data-byte and store it into a buffer */
+		temp = buffer & 0b00010000 ;						/* Find the column which depends on the enabled-bits */
+		if (temp == 0b00010000)
+		{
+			j = 1 ;
+     93a:	44 24       	eor	r4, r4
+     93c:	43 94       	inc	r4
+			if (index % 2 == 1)								/* In the odd number indexes there are the second half-bytes */
+			{                                               /* Opposite, in the even number indexes there are the first half-bytes */
+				j = j + 4 ;
+     93e:	0f 2e       	mov	r0, r31
+     940:	f5 e0       	ldi	r31, 0x05	; 5
+     942:	5f 2e       	mov	r5, r31
+     944:	f0 2d       	mov	r31, r0
+			 
+		}
+		temp = buffer & 0b00100000 ;
+		if (temp == 0b00100000)
+		{
+			j = 2 ;
+     946:	68 94       	set
+     948:	66 24       	eor	r6, r6
+     94a:	61 f8       	bld	r6, 1
+			if (index % 2 == 1)
+			{
+				j = j + 4 ;
+     94c:	0f 2e       	mov	r0, r31
+     94e:	f6 e0       	ldi	r31, 0x06	; 6
+     950:	7f 2e       	mov	r7, r31
+     952:	f0 2d       	mov	r31, r0
+			}
+		}
+		temp = buffer & 0b01000000 ;
+		if (temp == 0b01000000)
+		{
+			j = 3 ;
+     954:	0f 2e       	mov	r0, r31
+     956:	f3 e0       	ldi	r31, 0x03	; 3
+     958:	8f 2e       	mov	r8, r31
+     95a:	f0 2d       	mov	r31, r0
+			if (index % 2 == 1)
+			{
+				j = j + 4 ;
+     95c:	0f 2e       	mov	r0, r31
+     95e:	f7 e0       	ldi	r31, 0x07	; 7
+     960:	9f 2e       	mov	r9, r31
+     962:	f0 2d       	mov	r31, r0
+			}
+		}
+		temp = buffer & 0b10000000 ;
+		if (temp == 0b10000000)
+		{
+			j = 4 ;
+     964:	68 94       	set
+     966:	aa 24       	eor	r10, r10
+     968:	a2 f8       	bld	r10, 2
+			if (index % 2 == 1)
+			{
+				j = j + 4 ;
+     96a:	68 94       	set
+     96c:	bb 24       	eor	r11, r11
+     96e:	b3 f8       	bld	r11, 3
+	uint8_t buffer = 0 ;
+	uint8_t temp = 0 ;
+	uint8_t count = 0 ;
+	for (uint8_t index = 0; index < SIZE ; index++)
+	{
+		c = 65 + (index >> 1) ;								/* Convert the index into specific ascii that we want to scan */
+     970:	c1 2f       	mov	r28, r17
+     972:	c6 95       	lsr	r28
+     974:	cf 5b       	subi	r28, 0xBF	; 191
+		buffer = table[index] ;								/* Read the data-byte and store it into a buffer */
+     976:	f7 01       	movw	r30, r14
+     978:	d1 91       	ld	r29, Z+
+     97a:	7f 01       	movw	r14, r30
+		temp = buffer & 0b00010000 ;						/* Find the column which depends on the enabled-bits */
+		if (temp == 0b00010000)
+     97c:	d4 ff       	sbrs	r29, 4
+     97e:	19 c0       	rjmp	.+50     	; 0x9b2 <scanChessboard+0xaa>
+		{
+			j = 1 ;
+			if (index % 2 == 1)								/* In the odd number indexes there are the second half-bytes */
+     980:	10 ff       	sbrs	r17, 0
+     982:	02 c0       	rjmp	.+4      	; 0x988 <scanChessboard+0x80>
+			{                                               /* Opposite, in the even number indexes there are the first half-bytes */
+				j = j + 4 ;
+     984:	d5 2c       	mov	r13, r5
+     986:	01 c0       	rjmp	.+2      	; 0x98a <scanChessboard+0x82>
+		c = 65 + (index >> 1) ;								/* Convert the index into specific ascii that we want to scan */
+		buffer = table[index] ;								/* Read the data-byte and store it into a buffer */
+		temp = buffer & 0b00010000 ;						/* Find the column which depends on the enabled-bits */
+		if (temp == 0b00010000)
+		{
+			j = 1 ;
+     988:	d4 2c       	mov	r13, r4
+			if (index % 2 == 1)								/* In the odd number indexes there are the second half-bytes */
+			{                                               /* Opposite, in the even number indexes there are the first half-bytes */
+				j = j + 4 ;
+			}
+			/* scan for black player available moves */
+			if (readCell(c,j) == 'W')
+     98a:	6d 2d       	mov	r22, r13
+     98c:	8c 2f       	mov	r24, r28
+     98e:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     992:	87 35       	cpi	r24, 0x57	; 87
+     994:	41 f4       	brne	.+16     	; 0x9a6 <scanChessboard+0x9e>
+			{
+				count++ ;
+     996:	c3 94       	inc	r12
+				checkAvailable(c,j,'B',mine) ;
+     998:	20 2f       	mov	r18, r16
+     99a:	42 e4       	ldi	r20, 0x42	; 66
+     99c:	6d 2d       	mov	r22, r13
+     99e:	8c 2f       	mov	r24, r28
+     9a0:	0e 94 c8 00 	call	0x190	; 0x190 <checkAvailable>
+     9a4:	06 c0       	rjmp	.+12     	; 0x9b2 <scanChessboard+0xaa>
+			}
+			/* scan for white player available moves */
+			else
+			{
+				checkAvailable(c,j,'W',mine) ;
+     9a6:	20 2f       	mov	r18, r16
+     9a8:	47 e5       	ldi	r20, 0x57	; 87
+     9aa:	6d 2d       	mov	r22, r13
+     9ac:	8c 2f       	mov	r24, r28
+     9ae:	0e 94 c8 00 	call	0x190	; 0x190 <checkAvailable>
+			}
+			 
+		}
+		temp = buffer & 0b00100000 ;
+		if (temp == 0b00100000)
+     9b2:	d5 ff       	sbrs	r29, 5
+     9b4:	19 c0       	rjmp	.+50     	; 0x9e8 <scanChessboard+0xe0>
+		{
+			j = 2 ;
+			if (index % 2 == 1)
+     9b6:	10 ff       	sbrs	r17, 0
+     9b8:	02 c0       	rjmp	.+4      	; 0x9be <scanChessboard+0xb6>
+			{
+				j = j + 4 ;
+     9ba:	d7 2c       	mov	r13, r7
+     9bc:	01 c0       	rjmp	.+2      	; 0x9c0 <scanChessboard+0xb8>
+			 
+		}
+		temp = buffer & 0b00100000 ;
+		if (temp == 0b00100000)
+		{
+			j = 2 ;
+     9be:	d6 2c       	mov	r13, r6
+			if (index % 2 == 1)
+			{
+				j = j + 4 ;
+			}
+			/* scan for black player available moves */
+			if (readCell(c,j) == 'W')
+     9c0:	6d 2d       	mov	r22, r13
+     9c2:	8c 2f       	mov	r24, r28
+     9c4:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     9c8:	87 35       	cpi	r24, 0x57	; 87
+     9ca:	41 f4       	brne	.+16     	; 0x9dc <scanChessboard+0xd4>
+			{
+				count++ ;
+     9cc:	c3 94       	inc	r12
+				checkAvailable(c,j,'B',mine) ;
+     9ce:	20 2f       	mov	r18, r16
+     9d0:	42 e4       	ldi	r20, 0x42	; 66
+     9d2:	6d 2d       	mov	r22, r13
+     9d4:	8c 2f       	mov	r24, r28
+     9d6:	0e 94 c8 00 	call	0x190	; 0x190 <checkAvailable>
+     9da:	06 c0       	rjmp	.+12     	; 0x9e8 <scanChessboard+0xe0>
+			}
+			/* scan for white player available moves */
+			else
+			{
+				checkAvailable(c,j,'W',mine) ;
+     9dc:	20 2f       	mov	r18, r16
+     9de:	47 e5       	ldi	r20, 0x57	; 87
+     9e0:	6d 2d       	mov	r22, r13
+     9e2:	8c 2f       	mov	r24, r28
+     9e4:	0e 94 c8 00 	call	0x190	; 0x190 <checkAvailable>
+			}
+		}
+		temp = buffer & 0b01000000 ;
+		if (temp == 0b01000000)
+     9e8:	d6 ff       	sbrs	r29, 6
+     9ea:	19 c0       	rjmp	.+50     	; 0xa1e <scanChessboard+0x116>
+		{
+			j = 3 ;
+			if (index % 2 == 1)
+     9ec:	10 ff       	sbrs	r17, 0
+     9ee:	02 c0       	rjmp	.+4      	; 0x9f4 <scanChessboard+0xec>
+			{
+				j = j + 4 ;
+     9f0:	d9 2c       	mov	r13, r9
+     9f2:	01 c0       	rjmp	.+2      	; 0x9f6 <scanChessboard+0xee>
+			}
+		}
+		temp = buffer & 0b01000000 ;
+		if (temp == 0b01000000)
+		{
+			j = 3 ;
+     9f4:	d8 2c       	mov	r13, r8
+			if (index % 2 == 1)
+			{
+				j = j + 4 ;
+			}
+			/* scan for black player available moves */
+			if (readCell(c,j) == 'W')
+     9f6:	6d 2d       	mov	r22, r13
+     9f8:	8c 2f       	mov	r24, r28
+     9fa:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     9fe:	87 35       	cpi	r24, 0x57	; 87
+     a00:	41 f4       	brne	.+16     	; 0xa12 <scanChessboard+0x10a>
+			{
+				count++ ;
+     a02:	c3 94       	inc	r12
+				checkAvailable(c,j,'B',mine) ;
+     a04:	20 2f       	mov	r18, r16
+     a06:	42 e4       	ldi	r20, 0x42	; 66
+     a08:	6d 2d       	mov	r22, r13
+     a0a:	8c 2f       	mov	r24, r28
+     a0c:	0e 94 c8 00 	call	0x190	; 0x190 <checkAvailable>
+     a10:	06 c0       	rjmp	.+12     	; 0xa1e <scanChessboard+0x116>
+			}
+			/* scan for white player available moves */
+			else
+			{
+				checkAvailable(c,j,'W',mine) ;
+     a12:	20 2f       	mov	r18, r16
+     a14:	47 e5       	ldi	r20, 0x57	; 87
+     a16:	6d 2d       	mov	r22, r13
+     a18:	8c 2f       	mov	r24, r28
+     a1a:	0e 94 c8 00 	call	0x190	; 0x190 <checkAvailable>
+			}
+		}
+		temp = buffer & 0b10000000 ;
+		if (temp == 0b10000000)
+     a1e:	dd 23       	and	r29, r29
+     a20:	cc f4       	brge	.+50     	; 0xa54 <scanChessboard+0x14c>
+		{
+			j = 4 ;
+			if (index % 2 == 1)
+     a22:	10 ff       	sbrs	r17, 0
+     a24:	02 c0       	rjmp	.+4      	; 0xa2a <scanChessboard+0x122>
+			{
+				j = j + 4 ;
+     a26:	db 2d       	mov	r29, r11
+     a28:	01 c0       	rjmp	.+2      	; 0xa2c <scanChessboard+0x124>
+			}
+		}
+		temp = buffer & 0b10000000 ;
+		if (temp == 0b10000000)
+		{
+			j = 4 ;
+     a2a:	da 2d       	mov	r29, r10
+			if (index % 2 == 1)
+			{
+				j = j + 4 ;
+			}
+			/* scan for black player available moves */
+			if (readCell(c,j) == 'W')
+     a2c:	6d 2f       	mov	r22, r29
+     a2e:	8c 2f       	mov	r24, r28
+     a30:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     a34:	87 35       	cpi	r24, 0x57	; 87
+     a36:	41 f4       	brne	.+16     	; 0xa48 <scanChessboard+0x140>
+			{
+				count++ ;
+     a38:	c3 94       	inc	r12
+				checkAvailable(c,j,'B',mine) ;
+     a3a:	20 2f       	mov	r18, r16
+     a3c:	42 e4       	ldi	r20, 0x42	; 66
+     a3e:	6d 2f       	mov	r22, r29
+     a40:	8c 2f       	mov	r24, r28
+     a42:	0e 94 c8 00 	call	0x190	; 0x190 <checkAvailable>
+     a46:	06 c0       	rjmp	.+12     	; 0xa54 <scanChessboard+0x14c>
+			}
+			/* scan for white player available moves */
+			else
+			{
+				checkAvailable(c,j,'W',mine) ;
+     a48:	20 2f       	mov	r18, r16
+     a4a:	47 e5       	ldi	r20, 0x57	; 87
+     a4c:	6d 2f       	mov	r22, r29
+     a4e:	8c 2f       	mov	r24, r28
+     a50:	0e 94 c8 00 	call	0x190	; 0x190 <checkAvailable>
+	char c = 0 ;											/* For every one white checker checks for my available moves */
+	uint8_t j = 0 ;											/* and stores them in a parallel memory board the validtable */
+	uint8_t buffer = 0 ;
+	uint8_t temp = 0 ;
+	uint8_t count = 0 ;
+	for (uint8_t index = 0; index < SIZE ; index++)
+     a54:	1f 5f       	subi	r17, 0xFF	; 255
+     a56:	10 31       	cpi	r17, 0x10	; 16
+     a58:	09 f0       	breq	.+2      	; 0xa5c <scanChessboard+0x154>
+     a5a:	8a cf       	rjmp	.-236    	; 0x970 <scanChessboard+0x68>
+			}
+		}
+		
+	}
+	return count ;
+}
+     a5c:	8c 2d       	mov	r24, r12
+     a5e:	df 91       	pop	r29
+     a60:	cf 91       	pop	r28
+     a62:	1f 91       	pop	r17
+     a64:	0f 91       	pop	r16
+     a66:	ff 90       	pop	r15
+     a68:	ef 90       	pop	r14
+     a6a:	df 90       	pop	r13
+     a6c:	cf 90       	pop	r12
+     a6e:	bf 90       	pop	r11
+     a70:	af 90       	pop	r10
+     a72:	9f 90       	pop	r9
+     a74:	8f 90       	pop	r8
+     a76:	7f 90       	pop	r7
+     a78:	6f 90       	pop	r6
+     a7a:	5f 90       	pop	r5
+     a7c:	4f 90       	pop	r4
+     a7e:	08 95       	ret
+
+00000a80 <firstValid>:
+	buffer |= (1 << bit) ;
+	enemyValidtable[index] = buffer ;
+}
+
+void firstValid(char mine)									/* This is a stupid player. It plays the first legal move */
+{
+     a80:	1f 93       	push	r17
+     a82:	cf 93       	push	r28
+     a84:	df 93       	push	r29
+     a86:	ec e6       	ldi	r30, 0x6C	; 108
+     a88:	f0 e0       	ldi	r31, 0x00	; 0
+	//}
+	uint8_t buffer = 0 ;
+	uint8_t temp = 0 ;
+	uint8_t column = 0 ;
+	uint8_t found = 0 ;
+	uint8_t index = 0 ;
+     a8a:	30 e0       	ldi	r19, 0x00	; 0
+		//
+		//index++ ;
+	//}
+	uint8_t buffer = 0 ;
+	uint8_t temp = 0 ;
+	uint8_t column = 0 ;
+     a8c:	d0 e0       	ldi	r29, 0x00	; 0
+		buffer = mineValidtable[index] ;
+		temp = buffer & 0b00000001 ;
+		if (temp == 0b00000001 && found == 0)
+		{
+			column = 1;
+			found = 1 ;	
+     a8e:	51 e0       	ldi	r21, 0x01	; 1
+		}
+		temp = buffer & 0b00000010 ;
+		if (temp == 0b00000010 && found == 0)
+		{
+			column = 2 ;
+     a90:	72 e0       	ldi	r23, 0x02	; 2
+		{
+			column = 1;
+			found = 1 ;	
+		}
+		temp = buffer & 0b00000010 ;
+		if (temp == 0b00000010 && found == 0)
+     a92:	60 e0       	ldi	r22, 0x00	; 0
+	
+		}
+		temp = buffer & 0b00000100 ;
+		if (temp == 0b00000100 && found == 0)
+		{
+			column = 3;
+     a94:	13 e0       	ldi	r17, 0x03	; 3
+			found = 1 ;
+		}
+		temp = buffer & 0b00001000 ;
+		if (temp == 0b00001000 && found == 0)
+		{
+			column = 4 ;
+     a96:	c4 e0       	ldi	r28, 0x04	; 4
+			
+		}
+		temp = buffer & 0b00010000 ;
+		if (temp == 0b00010000 && found == 0)
+		{
+			column = 5 ;
+     a98:	b5 e0       	ldi	r27, 0x05	; 5
+			
+		}
+		temp = buffer & 0b00100000 ;
+		if (temp == 0b00100000 && found == 0)
+		{
+			column = 6 ;
+     a9a:	a6 e0       	ldi	r26, 0x06	; 6
+			
+		}
+		temp = buffer & 0b01000000 ;
+		if (temp == 0b01000000 && found == 0)
+		{
+			column = 7 ;
+     a9c:	47 e0       	ldi	r20, 0x07	; 7
+     a9e:	01 c0       	rjmp	.+2      	; 0xaa2 <firstValid+0x22>
+		{
+			column = 8 ;
+			found = 1 ;
+			
+		}
+		index++ ;
+     aa0:	39 2f       	mov	r19, r25
+	uint8_t index = 0 ;
+	char c = index + 65 ;
+	while ((index < (SIZE / 2)) && (found == 0))
+	{
+		c = index + 65 ;
+		buffer = mineValidtable[index] ;
+     aa2:	91 91       	ld	r25, Z+
+		temp = buffer & 0b00000001 ;
+		if (temp == 0b00000001 && found == 0)
+     aa4:	90 fd       	sbrc	r25, 0
+     aa6:	04 c0       	rjmp	.+8      	; 0xab0 <firstValid+0x30>
+		{
+			column = 1;
+			found = 1 ;	
+		}
+		temp = buffer & 0b00000010 ;
+		if (temp == 0b00000010 && found == 0)
+     aa8:	91 fd       	sbrc	r25, 1
+     aaa:	05 c0       	rjmp	.+10     	; 0xab6 <firstValid+0x36>
+     aac:	26 2f       	mov	r18, r22
+     aae:	05 c0       	rjmp	.+10     	; 0xaba <firstValid+0x3a>
+		buffer = mineValidtable[index] ;
+		temp = buffer & 0b00000001 ;
+		if (temp == 0b00000001 && found == 0)
+		{
+			column = 1;
+			found = 1 ;	
+     ab0:	25 2f       	mov	r18, r21
+		c = index + 65 ;
+		buffer = mineValidtable[index] ;
+		temp = buffer & 0b00000001 ;
+		if (temp == 0b00000001 && found == 0)
+		{
+			column = 1;
+     ab2:	d5 2f       	mov	r29, r21
+     ab4:	02 c0       	rjmp	.+4      	; 0xaba <firstValid+0x3a>
+		}
+		temp = buffer & 0b00000010 ;
+		if (temp == 0b00000010 && found == 0)
+		{
+			column = 2 ;
+			found = 1 ;
+     ab6:	25 2f       	mov	r18, r21
+			found = 1 ;	
+		}
+		temp = buffer & 0b00000010 ;
+		if (temp == 0b00000010 && found == 0)
+		{
+			column = 2 ;
+     ab8:	d7 2f       	mov	r29, r23
+			found = 1 ;
+	
+		}
+		temp = buffer & 0b00000100 ;
+		if (temp == 0b00000100 && found == 0)
+     aba:	92 ff       	sbrs	r25, 2
+     abc:	04 c0       	rjmp	.+8      	; 0xac6 <firstValid+0x46>
+     abe:	21 11       	cpse	r18, r1
+     ac0:	02 c0       	rjmp	.+4      	; 0xac6 <firstValid+0x46>
+		{
+			column = 3;
+			found = 1 ;
+     ac2:	25 2f       	mov	r18, r21
+	
+		}
+		temp = buffer & 0b00000100 ;
+		if (temp == 0b00000100 && found == 0)
+		{
+			column = 3;
+     ac4:	d1 2f       	mov	r29, r17
+			found = 1 ;
+		}
+		temp = buffer & 0b00001000 ;
+		if (temp == 0b00001000 && found == 0)
+     ac6:	93 ff       	sbrs	r25, 3
+     ac8:	04 c0       	rjmp	.+8      	; 0xad2 <firstValid+0x52>
+     aca:	21 11       	cpse	r18, r1
+     acc:	02 c0       	rjmp	.+4      	; 0xad2 <firstValid+0x52>
+		{
+			column = 4 ;
+			found = 1 ;
+     ace:	25 2f       	mov	r18, r21
+			found = 1 ;
+		}
+		temp = buffer & 0b00001000 ;
+		if (temp == 0b00001000 && found == 0)
+		{
+			column = 4 ;
+     ad0:	dc 2f       	mov	r29, r28
+			found = 1 ;
+			
+		}
+		temp = buffer & 0b00010000 ;
+		if (temp == 0b00010000 && found == 0)
+     ad2:	94 ff       	sbrs	r25, 4
+     ad4:	04 c0       	rjmp	.+8      	; 0xade <firstValid+0x5e>
+     ad6:	21 11       	cpse	r18, r1
+     ad8:	02 c0       	rjmp	.+4      	; 0xade <firstValid+0x5e>
+		{
+			column = 5 ;
+			found = 1 ;
+     ada:	25 2f       	mov	r18, r21
+			
+		}
+		temp = buffer & 0b00010000 ;
+		if (temp == 0b00010000 && found == 0)
+		{
+			column = 5 ;
+     adc:	db 2f       	mov	r29, r27
+			found = 1 ;
+			
+		}
+		temp = buffer & 0b00100000 ;
+		if (temp == 0b00100000 && found == 0)
+     ade:	95 ff       	sbrs	r25, 5
+     ae0:	04 c0       	rjmp	.+8      	; 0xaea <firstValid+0x6a>
+     ae2:	21 11       	cpse	r18, r1
+     ae4:	02 c0       	rjmp	.+4      	; 0xaea <firstValid+0x6a>
+		{
+			column = 6 ;
+			found = 1 ;
+     ae6:	25 2f       	mov	r18, r21
+			
+		}
+		temp = buffer & 0b00100000 ;
+		if (temp == 0b00100000 && found == 0)
+		{
+			column = 6 ;
+     ae8:	da 2f       	mov	r29, r26
+			found = 1 ;
+			
+		}
+		temp = buffer & 0b01000000 ;
+		if (temp == 0b01000000 && found == 0)
+     aea:	96 ff       	sbrs	r25, 6
+     aec:	04 c0       	rjmp	.+8      	; 0xaf6 <firstValid+0x76>
+     aee:	21 11       	cpse	r18, r1
+     af0:	02 c0       	rjmp	.+4      	; 0xaf6 <firstValid+0x76>
+		{
+			column = 7 ;
+			found = 1 ;
+     af2:	25 2f       	mov	r18, r21
+			
+		}
+		temp = buffer & 0b01000000 ;
+		if (temp == 0b01000000 && found == 0)
+		{
+			column = 7 ;
+     af4:	d4 2f       	mov	r29, r20
+			found = 1 ;
+			
+		}
+		temp = buffer & 0b10000000 ;
+		if (temp == 0b10000000 && found == 0)
+     af6:	99 23       	and	r25, r25
+     af8:	24 f4       	brge	.+8      	; 0xb02 <firstValid+0x82>
+     afa:	21 11       	cpse	r18, r1
+     afc:	08 c0       	rjmp	.+16     	; 0xb0e <firstValid+0x8e>
+		{
+			column = 8 ;
+     afe:	d8 e0       	ldi	r29, 0x08	; 8
+     b00:	06 c0       	rjmp	.+12     	; 0xb0e <firstValid+0x8e>
+			found = 1 ;
+			
+		}
+		index++ ;
+     b02:	91 e0       	ldi	r25, 0x01	; 1
+     b04:	93 0f       	add	r25, r19
+	uint8_t temp = 0 ;
+	uint8_t column = 0 ;
+	uint8_t found = 0 ;
+	uint8_t index = 0 ;
+	char c = index + 65 ;
+	while ((index < (SIZE / 2)) && (found == 0))
+     b06:	98 30       	cpi	r25, 0x08	; 8
+     b08:	11 f0       	breq	.+4      	; 0xb0e <firstValid+0x8e>
+     b0a:	22 23       	and	r18, r18
+     b0c:	49 f2       	breq	.-110    	; 0xaa0 <firstValid+0x20>
+	{
+		c = index + 65 ;
+     b0e:	c1 e4       	ldi	r28, 0x41	; 65
+     b10:	c3 0f       	add	r28, r19
+			found = 1 ;
+			
+		}
+		index++ ;
+	}
+	setChecker(c,column,mine);
+     b12:	48 2f       	mov	r20, r24
+     b14:	6d 2f       	mov	r22, r29
+     b16:	8c 2f       	mov	r24, r28
+     b18:	0e 94 49 00 	call	0x92	; 0x92 <setChecker>
+	myLine = c ;
+     b1c:	c0 93 61 00 	sts	0x0061, r28	; 0x800061 <myLine>
+	myColumn = column ;
+     b20:	d0 93 60 00 	sts	0x0060, r29	; 0x800060 <__data_start>
+}
+     b24:	df 91       	pop	r29
+     b26:	cf 91       	pop	r28
+     b28:	1f 91       	pop	r17
+     b2a:	08 95       	ret
+
+00000b2c <checkEnemyMove>:
+
+uint8_t checkEnemyMove(char c, uint8_t column)
+{
+	uint8_t index = c - 65 ;
+	uint8_t bit = column - 1 ;
+	uint8_t buffer = enemyValidtable[index] ;
+     b2c:	81 54       	subi	r24, 0x41	; 65
+     b2e:	e8 2f       	mov	r30, r24
+     b30:	f0 e0       	ldi	r31, 0x00	; 0
+     b32:	ec 59       	subi	r30, 0x9C	; 156
+     b34:	ff 4f       	sbci	r31, 0xFF	; 255
+	buffer = (buffer >> bit);
+     b36:	20 81       	ld	r18, Z
+     b38:	30 e0       	ldi	r19, 0x00	; 0
+     b3a:	61 50       	subi	r22, 0x01	; 1
+     b3c:	02 c0       	rjmp	.+4      	; 0xb42 <checkEnemyMove+0x16>
+     b3e:	35 95       	asr	r19
+     b40:	27 95       	ror	r18
+     b42:	6a 95       	dec	r22
+     b44:	e2 f7       	brpl	.-8      	; 0xb3e <checkEnemyMove+0x12>
+     b46:	81 e0       	ldi	r24, 0x01	; 1
+     b48:	20 ff       	sbrs	r18, 0
+     b4a:	80 e0       	ldi	r24, 0x00	; 0
+		return 1;
+	}else
+	{
+		return 0;
+	}
+}
+     b4c:	08 95       	ret
+
+00000b4e <TurnOtherCheckers>:
+
+
+
+void TurnOtherCheckers(char c,uint8_t column,char enemy,char player)
+{
+     b4e:	8f 92       	push	r8
+     b50:	9f 92       	push	r9
+     b52:	af 92       	push	r10
+     b54:	bf 92       	push	r11
+     b56:	cf 92       	push	r12
+     b58:	df 92       	push	r13
+     b5a:	ef 92       	push	r14
+     b5c:	ff 92       	push	r15
+     b5e:	0f 93       	push	r16
+     b60:	1f 93       	push	r17
+     b62:	cf 93       	push	r28
+     b64:	df 93       	push	r29
+     b66:	18 2f       	mov	r17, r24
+     b68:	06 2f       	mov	r16, r22
+     b6a:	c4 2f       	mov	r28, r20
+     b6c:	f2 2e       	mov	r15, r18
+	char row = c;
+	uint8_t col = column;
+	uint8_t found = 0;
+	/*Check for players checkers from right*/
+	col++;
+     b6e:	ee 24       	eor	r14, r14
+     b70:	e3 94       	inc	r14
+     b72:	e6 0e       	add	r14, r22
+	while (col < 9 && readCell(row,col) == enemy && found == 0)
+     b74:	88 e0       	ldi	r24, 0x08	; 8
+     b76:	8e 15       	cp	r24, r14
+     b78:	90 f4       	brcc	.+36     	; 0xb9e <TurnOtherCheckers+0x50>
+     b7a:	2e c0       	rjmp	.+92     	; 0xbd8 <TurnOtherCheckers+0x8a>
+	{
+		if (col+1 < 9)
+     b7c:	8d 2f       	mov	r24, r29
+     b7e:	90 e0       	ldi	r25, 0x00	; 0
+     b80:	01 96       	adiw	r24, 0x01	; 1
+     b82:	09 97       	sbiw	r24, 0x09	; 9
+     b84:	44 f4       	brge	.+16     	; 0xb96 <TurnOtherCheckers+0x48>
+		{
+			if(readCell(row,(col+1)) == player)
+     b86:	61 e0       	ldi	r22, 0x01	; 1
+     b88:	6d 0f       	add	r22, r29
+     b8a:	81 2f       	mov	r24, r17
+     b8c:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     b90:	dc 2c       	mov	r13, r12
+     b92:	8f 11       	cpse	r24, r15
+     b94:	db 2c       	mov	r13, r11
+			{
+				found = 1;
+			}
+		}
+		col++;
+     b96:	df 5f       	subi	r29, 0xFF	; 255
+	char row = c;
+	uint8_t col = column;
+	uint8_t found = 0;
+	/*Check for players checkers from right*/
+	col++;
+	while (col < 9 && readCell(row,col) == enemy && found == 0)
+     b98:	d9 30       	cpi	r29, 0x09	; 9
+     b9a:	31 f4       	brne	.+12     	; 0xba8 <TurnOtherCheckers+0x5a>
+     b9c:	1d c0       	rjmp	.+58     	; 0xbd8 <TurnOtherCheckers+0x8a>
+     b9e:	de 2d       	mov	r29, r14
+     ba0:	d1 2c       	mov	r13, r1
+     ba2:	cc 24       	eor	r12, r12
+     ba4:	c3 94       	inc	r12
+     ba6:	b1 2c       	mov	r11, r1
+     ba8:	6d 2f       	mov	r22, r29
+     baa:	81 2f       	mov	r24, r17
+     bac:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     bb0:	8c 13       	cpse	r24, r28
+     bb2:	02 c0       	rjmp	.+4      	; 0xbb8 <TurnOtherCheckers+0x6a>
+     bb4:	dd 20       	and	r13, r13
+     bb6:	11 f3       	breq	.-60     	; 0xb7c <TurnOtherCheckers+0x2e>
+				found = 1;
+			}
+		}
+		col++;
+	}
+	if(found == 1 && (col < 9))
+     bb8:	81 e0       	ldi	r24, 0x01	; 1
+     bba:	d8 12       	cpse	r13, r24
+     bbc:	0d c0       	rjmp	.+26     	; 0xbd8 <TurnOtherCheckers+0x8a>
+     bbe:	d9 30       	cpi	r29, 0x09	; 9
+     bc0:	58 f4       	brcc	.+22     	; 0xbd8 <TurnOtherCheckers+0x8a>
+	{
+		for(uint8_t i = (column + 1); i < col; i++)
+     bc2:	ed 16       	cp	r14, r29
+     bc4:	48 f4       	brcc	.+18     	; 0xbd8 <TurnOtherCheckers+0x8a>
+     bc6:	de 2c       	mov	r13, r14
+		{
+			setChecker(c,i,player);
+     bc8:	4f 2d       	mov	r20, r15
+     bca:	6d 2d       	mov	r22, r13
+     bcc:	81 2f       	mov	r24, r17
+     bce:	0e 94 49 00 	call	0x92	; 0x92 <setChecker>
+		}
+		col++;
+	}
+	if(found == 1 && (col < 9))
+	{
+		for(uint8_t i = (column + 1); i < col; i++)
+     bd2:	d3 94       	inc	r13
+     bd4:	dd 16       	cp	r13, r29
+     bd6:	c0 f3       	brcs	.-16     	; 0xbc8 <TurnOtherCheckers+0x7a>
+		}
+	}
+	/*Check for players checkers from left*/
+	found = 0 ;
+	col = column;
+	col--;
+     bd8:	dd 24       	eor	r13, r13
+     bda:	da 94       	dec	r13
+     bdc:	d0 0e       	add	r13, r16
+	while (col > 0 && readCell(row,col) == enemy && found == 0)
+     bde:	91 f4       	brne	.+36     	; 0xc04 <TurnOtherCheckers+0xb6>
+     be0:	32 c0       	rjmp	.+100    	; 0xc46 <TurnOtherCheckers+0xf8>
+	{
+		if (col-1 > 0)
+     be2:	8d 2f       	mov	r24, r29
+     be4:	90 e0       	ldi	r25, 0x00	; 0
+     be6:	01 97       	sbiw	r24, 0x01	; 1
+     be8:	18 16       	cp	r1, r24
+     bea:	19 06       	cpc	r1, r25
+     bec:	44 f4       	brge	.+16     	; 0xbfe <TurnOtherCheckers+0xb0>
+		{
+			if(readCell(row,(col-1)) == player)
+     bee:	6f ef       	ldi	r22, 0xFF	; 255
+     bf0:	6d 0f       	add	r22, r29
+     bf2:	81 2f       	mov	r24, r17
+     bf4:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     bf8:	cb 2c       	mov	r12, r11
+     bfa:	f8 12       	cpse	r15, r24
+     bfc:	ca 2c       	mov	r12, r10
+			{
+				found = 1;
+			}
+		}
+		col--;
+     bfe:	d1 50       	subi	r29, 0x01	; 1
+	}
+	/*Check for players checkers from left*/
+	found = 0 ;
+	col = column;
+	col--;
+	while (col > 0 && readCell(row,col) == enemy && found == 0)
+     c00:	31 f4       	brne	.+12     	; 0xc0e <TurnOtherCheckers+0xc0>
+     c02:	0d c0       	rjmp	.+26     	; 0xc1e <TurnOtherCheckers+0xd0>
+     c04:	dd 2d       	mov	r29, r13
+     c06:	c1 2c       	mov	r12, r1
+     c08:	bb 24       	eor	r11, r11
+     c0a:	b3 94       	inc	r11
+     c0c:	a1 2c       	mov	r10, r1
+     c0e:	6d 2f       	mov	r22, r29
+     c10:	81 2f       	mov	r24, r17
+     c12:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     c16:	c8 13       	cpse	r28, r24
+     c18:	02 c0       	rjmp	.+4      	; 0xc1e <TurnOtherCheckers+0xd0>
+     c1a:	cc 20       	and	r12, r12
+     c1c:	11 f3       	breq	.-60     	; 0xbe2 <TurnOtherCheckers+0x94>
+				found = 1;
+			}
+		}
+		col--;
+	}
+	if(found == 1 && (column - 1 > 0))
+     c1e:	81 e0       	ldi	r24, 0x01	; 1
+     c20:	c8 12       	cpse	r12, r24
+     c22:	11 c0       	rjmp	.+34     	; 0xc46 <TurnOtherCheckers+0xf8>
+     c24:	80 2f       	mov	r24, r16
+     c26:	90 e0       	ldi	r25, 0x00	; 0
+     c28:	01 97       	sbiw	r24, 0x01	; 1
+     c2a:	18 16       	cp	r1, r24
+     c2c:	19 06       	cpc	r1, r25
+     c2e:	5c f4       	brge	.+22     	; 0xc46 <TurnOtherCheckers+0xf8>
+	{
+		for(uint8_t i = (column -1); i > col; i--)
+     c30:	dd 15       	cp	r29, r13
+     c32:	48 f4       	brcc	.+18     	; 0xc46 <TurnOtherCheckers+0xf8>
+     c34:	cd 2c       	mov	r12, r13
+		{
+			setChecker(c,i,player);
+     c36:	4f 2d       	mov	r20, r15
+     c38:	6c 2d       	mov	r22, r12
+     c3a:	81 2f       	mov	r24, r17
+     c3c:	0e 94 49 00 	call	0x92	; 0x92 <setChecker>
+		}
+		col--;
+	}
+	if(found == 1 && (column - 1 > 0))
+	{
+		for(uint8_t i = (column -1); i > col; i--)
+     c40:	ca 94       	dec	r12
+     c42:	dc 15       	cp	r29, r12
+     c44:	c0 f3       	brcs	.-16     	; 0xc36 <TurnOtherCheckers+0xe8>
+		}
+	}
+	/*Check for players checkers from up*/
+	found = 0 ;
+	col = column;
+	row-- ;
+     c46:	cc 24       	eor	r12, r12
+     c48:	ca 94       	dec	r12
+     c4a:	c1 0e       	add	r12, r17
+	while (row > '@' && readCell(row,col) == enemy && found == 0)
+     c4c:	80 e4       	ldi	r24, 0x40	; 64
+     c4e:	8c 15       	cp	r24, r12
+     c50:	98 f0       	brcs	.+38     	; 0xc78 <TurnOtherCheckers+0x12a>
+     c52:	8a c1       	rjmp	.+788    	; 0xf68 <TurnOtherCheckers+0x41a>
+	{
+		if (row - 1 > '@')
+     c54:	8d 2f       	mov	r24, r29
+     c56:	90 e0       	ldi	r25, 0x00	; 0
+     c58:	01 97       	sbiw	r24, 0x01	; 1
+     c5a:	81 34       	cpi	r24, 0x41	; 65
+     c5c:	91 05       	cpc	r25, r1
+     c5e:	44 f0       	brlt	.+16     	; 0xc70 <TurnOtherCheckers+0x122>
+		{
+			if(readCell((row-1),col) == player)
+     c60:	60 2f       	mov	r22, r16
+     c62:	8f ef       	ldi	r24, 0xFF	; 255
+     c64:	8d 0f       	add	r24, r29
+     c66:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     c6a:	ba 2c       	mov	r11, r10
+     c6c:	f8 12       	cpse	r15, r24
+     c6e:	b9 2c       	mov	r11, r9
+			{
+				found = 1;
+			}
+		}
+		row--;
+     c70:	d1 50       	subi	r29, 0x01	; 1
+	}
+	/*Check for players checkers from up*/
+	found = 0 ;
+	col = column;
+	row-- ;
+	while (row > '@' && readCell(row,col) == enemy && found == 0)
+     c72:	d0 34       	cpi	r29, 0x40	; 64
+     c74:	31 f4       	brne	.+12     	; 0xc82 <TurnOtherCheckers+0x134>
+     c76:	0d c0       	rjmp	.+26     	; 0xc92 <TurnOtherCheckers+0x144>
+     c78:	dc 2d       	mov	r29, r12
+     c7a:	b1 2c       	mov	r11, r1
+     c7c:	aa 24       	eor	r10, r10
+     c7e:	a3 94       	inc	r10
+     c80:	91 2c       	mov	r9, r1
+     c82:	60 2f       	mov	r22, r16
+     c84:	8d 2f       	mov	r24, r29
+     c86:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     c8a:	c8 13       	cpse	r28, r24
+     c8c:	02 c0       	rjmp	.+4      	; 0xc92 <TurnOtherCheckers+0x144>
+     c8e:	bb 20       	and	r11, r11
+     c90:	09 f3       	breq	.-62     	; 0xc54 <TurnOtherCheckers+0x106>
+				found = 1;
+			}
+		}
+		row--;
+	}
+	if(found == 1 && (row > '@'))
+     c92:	81 e0       	ldi	r24, 0x01	; 1
+     c94:	b8 12       	cpse	r11, r24
+     c96:	0d c0       	rjmp	.+26     	; 0xcb2 <TurnOtherCheckers+0x164>
+     c98:	d1 34       	cpi	r29, 0x41	; 65
+     c9a:	58 f0       	brcs	.+22     	; 0xcb2 <TurnOtherCheckers+0x164>
+	{
+		for(uint8_t i = (c -1); i > row; i--)
+     c9c:	dc 15       	cp	r29, r12
+     c9e:	48 f4       	brcc	.+18     	; 0xcb2 <TurnOtherCheckers+0x164>
+     ca0:	bc 2c       	mov	r11, r12
+		{
+			setChecker(i,col,player);
+     ca2:	4f 2d       	mov	r20, r15
+     ca4:	60 2f       	mov	r22, r16
+     ca6:	8b 2d       	mov	r24, r11
+     ca8:	0e 94 49 00 	call	0x92	; 0x92 <setChecker>
+		}
+		row--;
+	}
+	if(found == 1 && (row > '@'))
+	{
+		for(uint8_t i = (c -1); i > row; i--)
+     cac:	ba 94       	dec	r11
+     cae:	db 15       	cp	r29, r11
+     cb0:	c0 f3       	brcs	.-16     	; 0xca2 <TurnOtherCheckers+0x154>
+	}
+	/*Check for players checkers from down*/
+	found = 0 ;
+	row = c;
+	col = column;
+	row++ ;
+     cb2:	88 24       	eor	r8, r8
+     cb4:	83 94       	inc	r8
+     cb6:	81 0e       	add	r8, r17
+	while (row < 'I' && readCell(row,col) == enemy && found == 0)
+     cb8:	88 e4       	ldi	r24, 0x48	; 72
+     cba:	88 15       	cp	r24, r8
+     cbc:	98 f4       	brcc	.+38     	; 0xce4 <TurnOtherCheckers+0x196>
+     cbe:	25 c0       	rjmp	.+74     	; 0xd0a <TurnOtherCheckers+0x1bc>
+	{
+		if (row + 1 < 'I')
+     cc0:	8d 2f       	mov	r24, r29
+     cc2:	90 e0       	ldi	r25, 0x00	; 0
+     cc4:	01 96       	adiw	r24, 0x01	; 1
+     cc6:	89 34       	cpi	r24, 0x49	; 73
+     cc8:	91 05       	cpc	r25, r1
+     cca:	44 f4       	brge	.+16     	; 0xcdc <TurnOtherCheckers+0x18e>
+		{
+			if(readCell((row+1),col) == player)
+     ccc:	60 2f       	mov	r22, r16
+     cce:	81 e0       	ldi	r24, 0x01	; 1
+     cd0:	8d 0f       	add	r24, r29
+     cd2:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     cd6:	1a 2d       	mov	r17, r10
+     cd8:	f8 12       	cpse	r15, r24
+     cda:	19 2d       	mov	r17, r9
+			{
+				found = 1;
+			}
+		}
+		row++;
+     cdc:	df 5f       	subi	r29, 0xFF	; 255
+	/*Check for players checkers from down*/
+	found = 0 ;
+	row = c;
+	col = column;
+	row++ ;
+	while (row < 'I' && readCell(row,col) == enemy && found == 0)
+     cde:	d9 34       	cpi	r29, 0x49	; 73
+     ce0:	31 f4       	brne	.+12     	; 0xcee <TurnOtherCheckers+0x1a0>
+     ce2:	0d c0       	rjmp	.+26     	; 0xcfe <TurnOtherCheckers+0x1b0>
+		}
+		row--;
+	}
+	if(found == 1 && (row > '@'))
+	{
+		for(uint8_t i = (c -1); i > row; i--)
+     ce4:	d8 2d       	mov	r29, r8
+     ce6:	10 e0       	ldi	r17, 0x00	; 0
+     ce8:	aa 24       	eor	r10, r10
+     cea:	a3 94       	inc	r10
+     cec:	91 2c       	mov	r9, r1
+	/*Check for players checkers from down*/
+	found = 0 ;
+	row = c;
+	col = column;
+	row++ ;
+	while (row < 'I' && readCell(row,col) == enemy && found == 0)
+     cee:	60 2f       	mov	r22, r16
+     cf0:	8d 2f       	mov	r24, r29
+     cf2:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     cf6:	c8 13       	cpse	r28, r24
+     cf8:	02 c0       	rjmp	.+4      	; 0xcfe <TurnOtherCheckers+0x1b0>
+     cfa:	11 23       	and	r17, r17
+     cfc:	09 f3       	breq	.-62     	; 0xcc0 <TurnOtherCheckers+0x172>
+				found = 1;
+			}
+		}
+		row++;
+	}
+	if(found == 1 && (row < 'I'))
+     cfe:	11 30       	cpi	r17, 0x01	; 1
+     d00:	21 f4       	brne	.+8      	; 0xd0a <TurnOtherCheckers+0x1bc>
+     d02:	d9 34       	cpi	r29, 0x49	; 73
+     d04:	10 f4       	brcc	.+4      	; 0xd0a <TurnOtherCheckers+0x1bc>
+	{
+		for(uint8_t i = c+1; i < row; i++)
+     d06:	8d 16       	cp	r8, r29
+     d08:	38 f0       	brcs	.+14     	; 0xd18 <TurnOtherCheckers+0x1ca>
+	found = 0 ;
+	row = c;
+	col = column;
+	row--;
+	col++;
+	while ((row > '@' && col < 9) && readCell(row,col) == enemy && found != 1)
+     d0a:	80 e4       	ldi	r24, 0x40	; 64
+     d0c:	8c 15       	cp	r24, r12
+     d0e:	d0 f5       	brcc	.+116    	; 0xd84 <TurnOtherCheckers+0x236>
+     d10:	88 e0       	ldi	r24, 0x08	; 8
+     d12:	8e 15       	cp	r24, r14
+     d14:	30 f5       	brcc	.+76     	; 0xd62 <TurnOtherCheckers+0x214>
+     d16:	36 c0       	rjmp	.+108    	; 0xd84 <TurnOtherCheckers+0x236>
+		}
+		row++;
+	}
+	if(found == 1 && (row < 'I'))
+	{
+		for(uint8_t i = c+1; i < row; i++)
+     d18:	b8 2c       	mov	r11, r8
+		{
+			setChecker(i,col,player);
+     d1a:	4f 2d       	mov	r20, r15
+     d1c:	60 2f       	mov	r22, r16
+     d1e:	8b 2d       	mov	r24, r11
+     d20:	0e 94 49 00 	call	0x92	; 0x92 <setChecker>
+		}
+		row++;
+	}
+	if(found == 1 && (row < 'I'))
+	{
+		for(uint8_t i = c+1; i < row; i++)
+     d24:	b3 94       	inc	r11
+     d26:	bd 16       	cp	r11, r29
+     d28:	c0 f3       	brcs	.-16     	; 0xd1a <TurnOtherCheckers+0x1cc>
+     d2a:	ef cf       	rjmp	.-34     	; 0xd0a <TurnOtherCheckers+0x1bc>
+	col = column;
+	row--;
+	col++;
+	while ((row > '@' && col < 9) && readCell(row,col) == enemy && found != 1)
+	{
+		if ((row - 1 > '@') && (col + 1 < 9))
+     d2c:	8d 2f       	mov	r24, r29
+     d2e:	90 e0       	ldi	r25, 0x00	; 0
+     d30:	01 97       	sbiw	r24, 0x01	; 1
+     d32:	81 34       	cpi	r24, 0x41	; 65
+     d34:	91 05       	cpc	r25, r1
+     d36:	74 f0       	brlt	.+28     	; 0xd54 <TurnOtherCheckers+0x206>
+     d38:	80 2f       	mov	r24, r16
+     d3a:	90 e0       	ldi	r25, 0x00	; 0
+     d3c:	01 96       	adiw	r24, 0x01	; 1
+     d3e:	09 97       	sbiw	r24, 0x09	; 9
+     d40:	4c f4       	brge	.+18     	; 0xd54 <TurnOtherCheckers+0x206>
+		{
+			if(readCell((row-1),(col+1)) == player)
+     d42:	61 e0       	ldi	r22, 0x01	; 1
+     d44:	60 0f       	add	r22, r16
+     d46:	8f ef       	ldi	r24, 0xFF	; 255
+     d48:	8d 0f       	add	r24, r29
+     d4a:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     d4e:	f8 12       	cpse	r15, r24
+     d50:	01 c0       	rjmp	.+2      	; 0xd54 <TurnOtherCheckers+0x206>
+			{
+				found = 1;
+     d52:	1a 2d       	mov	r17, r10
+			}
+		}
+		row--;
+     d54:	d1 50       	subi	r29, 0x01	; 1
+		col++;
+     d56:	0f 5f       	subi	r16, 0xFF	; 255
+	found = 0 ;
+	row = c;
+	col = column;
+	row--;
+	col++;
+	while ((row > '@' && col < 9) && readCell(row,col) == enemy && found != 1)
+     d58:	d0 34       	cpi	r29, 0x40	; 64
+     d5a:	89 f0       	breq	.+34     	; 0xd7e <TurnOtherCheckers+0x230>
+     d5c:	09 30       	cpi	r16, 0x09	; 9
+     d5e:	31 f4       	brne	.+12     	; 0xd6c <TurnOtherCheckers+0x21e>
+     d60:	f0 c0       	rjmp	.+480    	; 0xf42 <TurnOtherCheckers+0x3f4>
+     d62:	0e 2d       	mov	r16, r14
+     d64:	dc 2d       	mov	r29, r12
+     d66:	10 e0       	ldi	r17, 0x00	; 0
+	{
+		if ((row - 1 > '@') && (col + 1 < 9))
+		{
+			if(readCell((row-1),(col+1)) == player)
+			{
+				found = 1;
+     d68:	aa 24       	eor	r10, r10
+     d6a:	a3 94       	inc	r10
+	found = 0 ;
+	row = c;
+	col = column;
+	row--;
+	col++;
+	while ((row > '@' && col < 9) && readCell(row,col) == enemy && found != 1)
+     d6c:	60 2f       	mov	r22, r16
+     d6e:	8d 2f       	mov	r24, r29
+     d70:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     d74:	c8 13       	cpse	r28, r24
+     d76:	03 c0       	rjmp	.+6      	; 0xd7e <TurnOtherCheckers+0x230>
+     d78:	11 30       	cpi	r17, 0x01	; 1
+     d7a:	c1 f6       	brne	.-80     	; 0xd2c <TurnOtherCheckers+0x1de>
+     d7c:	fd c0       	rjmp	.+506    	; 0xf78 <TurnOtherCheckers+0x42a>
+		row--;
+		col++;
+	}
+	col = column;
+	col++ ;
+	if(found == 1 && (row > '@') && (col < 9))
+     d7e:	11 30       	cpi	r17, 0x01	; 1
+     d80:	09 f4       	brne	.+2      	; 0xd84 <TurnOtherCheckers+0x236>
+     d82:	fa c0       	rjmp	.+500    	; 0xf78 <TurnOtherCheckers+0x42a>
+	found = 0 ;
+	row = c;
+	col = column;
+	row++;
+	col--;
+	while ((row < 'I' && col > 0) && readCell(row,col) == enemy && found != 1)
+     d84:	88 e4       	ldi	r24, 0x48	; 72
+     d86:	88 15       	cp	r24, r8
+     d88:	08 f4       	brcc	.+2      	; 0xd8c <TurnOtherCheckers+0x23e>
+     d8a:	03 c1       	rjmp	.+518    	; 0xf92 <TurnOtherCheckers+0x444>
+     d8c:	d1 10       	cpse	r13, r1
+     d8e:	2b c0       	rjmp	.+86     	; 0xde6 <TurnOtherCheckers+0x298>
+     d90:	83 c0       	rjmp	.+262    	; 0xe98 <TurnOtherCheckers+0x34a>
+	}
+	col = column;
+	col++ ;
+	if(found == 1 && (row > '@') && (col < 9))
+	{
+		for(uint8_t i = c - 1; i > row; i--)
+     d92:	dc 15       	cp	r29, r12
+     d94:	b8 f7       	brcc	.-18     	; 0xd84 <TurnOtherCheckers+0x236>
+     d96:	0c 2d       	mov	r16, r12
+     d98:	be 2c       	mov	r11, r14
+		{
+			setChecker(i,col,player);
+     d9a:	4f 2d       	mov	r20, r15
+     d9c:	6b 2d       	mov	r22, r11
+     d9e:	80 2f       	mov	r24, r16
+     da0:	0e 94 49 00 	call	0x92	; 0x92 <setChecker>
+			col++;
+     da4:	b3 94       	inc	r11
+	}
+	col = column;
+	col++ ;
+	if(found == 1 && (row > '@') && (col < 9))
+	{
+		for(uint8_t i = c - 1; i > row; i--)
+     da6:	01 50       	subi	r16, 0x01	; 1
+     da8:	d0 17       	cp	r29, r16
+     daa:	b8 f3       	brcs	.-18     	; 0xd9a <TurnOtherCheckers+0x24c>
+     dac:	eb cf       	rjmp	.-42     	; 0xd84 <TurnOtherCheckers+0x236>
+	col = column;
+	row++;
+	col--;
+	while ((row < 'I' && col > 0) && readCell(row,col) == enemy && found != 1)
+	{
+		if ((row + 1 < 'I') && (col - 1 > 0))
+     dae:	8d 2f       	mov	r24, r29
+     db0:	90 e0       	ldi	r25, 0x00	; 0
+     db2:	01 96       	adiw	r24, 0x01	; 1
+     db4:	89 34       	cpi	r24, 0x49	; 73
+     db6:	91 05       	cpc	r25, r1
+     db8:	7c f4       	brge	.+30     	; 0xdd8 <TurnOtherCheckers+0x28a>
+     dba:	80 2f       	mov	r24, r16
+     dbc:	90 e0       	ldi	r25, 0x00	; 0
+     dbe:	01 97       	sbiw	r24, 0x01	; 1
+     dc0:	18 16       	cp	r1, r24
+     dc2:	19 06       	cpc	r1, r25
+     dc4:	4c f4       	brge	.+18     	; 0xdd8 <TurnOtherCheckers+0x28a>
+		{
+			if(readCell((row+1),(col-1)) == player)
+     dc6:	6f ef       	ldi	r22, 0xFF	; 255
+     dc8:	60 0f       	add	r22, r16
+     dca:	81 e0       	ldi	r24, 0x01	; 1
+     dcc:	8d 0f       	add	r24, r29
+     dce:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     dd2:	f8 12       	cpse	r15, r24
+     dd4:	01 c0       	rjmp	.+2      	; 0xdd8 <TurnOtherCheckers+0x28a>
+			{
+				found = 1;
+     dd6:	1a 2d       	mov	r17, r10
+			}
+		}
+		row++;
+     dd8:	df 5f       	subi	r29, 0xFF	; 255
+		col--;
+     dda:	01 50       	subi	r16, 0x01	; 1
+	found = 0 ;
+	row = c;
+	col = column;
+	row++;
+	col--;
+	while ((row < 'I' && col > 0) && readCell(row,col) == enemy && found != 1)
+     ddc:	d9 34       	cpi	r29, 0x49	; 73
+     dde:	89 f0       	breq	.+34     	; 0xe02 <TurnOtherCheckers+0x2b4>
+     de0:	01 11       	cpse	r16, r1
+     de2:	06 c0       	rjmp	.+12     	; 0xdf0 <TurnOtherCheckers+0x2a2>
+     de4:	b2 c0       	rjmp	.+356    	; 0xf4a <TurnOtherCheckers+0x3fc>
+     de6:	0d 2d       	mov	r16, r13
+     de8:	d8 2d       	mov	r29, r8
+     dea:	10 e0       	ldi	r17, 0x00	; 0
+	{
+		if ((row + 1 < 'I') && (col - 1 > 0))
+		{
+			if(readCell((row+1),(col-1)) == player)
+			{
+				found = 1;
+     dec:	aa 24       	eor	r10, r10
+     dee:	a3 94       	inc	r10
+	found = 0 ;
+	row = c;
+	col = column;
+	row++;
+	col--;
+	while ((row < 'I' && col > 0) && readCell(row,col) == enemy && found != 1)
+     df0:	60 2f       	mov	r22, r16
+     df2:	8d 2f       	mov	r24, r29
+     df4:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     df8:	c8 13       	cpse	r28, r24
+     dfa:	03 c0       	rjmp	.+6      	; 0xe02 <TurnOtherCheckers+0x2b4>
+     dfc:	11 30       	cpi	r17, 0x01	; 1
+     dfe:	b9 f6       	brne	.-82     	; 0xdae <TurnOtherCheckers+0x260>
+     e00:	bf c0       	rjmp	.+382    	; 0xf80 <TurnOtherCheckers+0x432>
+		row++;
+		col--;
+	}
+	col = column;
+	col-- ;
+	if(found == 1 && (row < 'I') && (col > 0))
+     e02:	11 30       	cpi	r17, 0x01	; 1
+     e04:	09 f0       	breq	.+2      	; 0xe08 <TurnOtherCheckers+0x2ba>
+     e06:	c0 c0       	rjmp	.+384    	; 0xf88 <TurnOtherCheckers+0x43a>
+     e08:	bb c0       	rjmp	.+374    	; 0xf80 <TurnOtherCheckers+0x432>
+	found = 0 ;
+	row = c;
+	col = column;
+	row--;
+	col--;
+	while ((row > '@' && col > 0) && readCell(row,col) == enemy && found != 1)
+     e0a:	80 e4       	ldi	r24, 0x40	; 64
+     e0c:	8c 15       	cp	r24, r12
+     e0e:	08 f0       	brcs	.+2      	; 0xe12 <TurnOtherCheckers+0x2c4>
+     e10:	43 c0       	rjmp	.+134    	; 0xe98 <TurnOtherCheckers+0x34a>
+     e12:	d1 10       	cpse	r13, r1
+     e14:	2f c0       	rjmp	.+94     	; 0xe74 <TurnOtherCheckers+0x326>
+     e16:	40 c0       	rjmp	.+128    	; 0xe98 <TurnOtherCheckers+0x34a>
+	}
+	col = column;
+	col-- ;
+	if(found == 1 && (row < 'I') && (col > 0))
+	{
+		for(uint8_t i = c+1; ((i < row) && (col > 0));  i++)
+     e18:	8d 16       	cp	r8, r29
+     e1a:	08 f0       	brcs	.+2      	; 0xe1e <TurnOtherCheckers+0x2d0>
+     e1c:	99 c0       	rjmp	.+306    	; 0xf50 <TurnOtherCheckers+0x402>
+     e1e:	08 2d       	mov	r16, r8
+     e20:	bd 2c       	mov	r11, r13
+		{
+			setChecker(i,col,player);
+     e22:	4f 2d       	mov	r20, r15
+     e24:	6b 2d       	mov	r22, r11
+     e26:	80 2f       	mov	r24, r16
+     e28:	0e 94 49 00 	call	0x92	; 0x92 <setChecker>
+			col--;
+     e2c:	ba 94       	dec	r11
+	}
+	col = column;
+	col-- ;
+	if(found == 1 && (row < 'I') && (col > 0))
+	{
+		for(uint8_t i = c+1; ((i < row) && (col > 0));  i++)
+     e2e:	0f 5f       	subi	r16, 0xFF	; 255
+     e30:	0d 17       	cp	r16, r29
+     e32:	08 f0       	brcs	.+2      	; 0xe36 <TurnOtherCheckers+0x2e8>
+     e34:	8d c0       	rjmp	.+282    	; 0xf50 <TurnOtherCheckers+0x402>
+     e36:	b1 10       	cpse	r11, r1
+     e38:	f4 cf       	rjmp	.-24     	; 0xe22 <TurnOtherCheckers+0x2d4>
+     e3a:	8a c0       	rjmp	.+276    	; 0xf50 <TurnOtherCheckers+0x402>
+	col = column;
+	row--;
+	col--;
+	while ((row > '@' && col > 0) && readCell(row,col) == enemy && found != 1)
+	{
+		if ((row - 1 > '@') && (col - 1 > 0))
+     e3c:	8d 2f       	mov	r24, r29
+     e3e:	90 e0       	ldi	r25, 0x00	; 0
+     e40:	01 97       	sbiw	r24, 0x01	; 1
+     e42:	81 34       	cpi	r24, 0x41	; 65
+     e44:	91 05       	cpc	r25, r1
+     e46:	7c f0       	brlt	.+30     	; 0xe66 <TurnOtherCheckers+0x318>
+     e48:	80 2f       	mov	r24, r16
+     e4a:	90 e0       	ldi	r25, 0x00	; 0
+     e4c:	01 97       	sbiw	r24, 0x01	; 1
+     e4e:	18 16       	cp	r1, r24
+     e50:	19 06       	cpc	r1, r25
+     e52:	4c f4       	brge	.+18     	; 0xe66 <TurnOtherCheckers+0x318>
+		{
+			if(readCell((row-1),(col-1)) == player)
+     e54:	6f ef       	ldi	r22, 0xFF	; 255
+     e56:	60 0f       	add	r22, r16
+     e58:	8f ef       	ldi	r24, 0xFF	; 255
+     e5a:	8d 0f       	add	r24, r29
+     e5c:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     e60:	f8 12       	cpse	r15, r24
+     e62:	01 c0       	rjmp	.+2      	; 0xe66 <TurnOtherCheckers+0x318>
+			{
+				found = 1;
+     e64:	1a 2d       	mov	r17, r10
+			}
+		}
+		row--;
+     e66:	d1 50       	subi	r29, 0x01	; 1
+		col--;
+     e68:	01 50       	subi	r16, 0x01	; 1
+	found = 0 ;
+	row = c;
+	col = column;
+	row--;
+	col--;
+	while ((row > '@' && col > 0) && readCell(row,col) == enemy && found != 1)
+     e6a:	d1 34       	cpi	r29, 0x41	; 65
+     e6c:	88 f0       	brcs	.+34     	; 0xe90 <TurnOtherCheckers+0x342>
+     e6e:	01 11       	cpse	r16, r1
+     e70:	06 c0       	rjmp	.+12     	; 0xe7e <TurnOtherCheckers+0x330>
+     e72:	73 c0       	rjmp	.+230    	; 0xf5a <TurnOtherCheckers+0x40c>
+	{
+		if ((row - 1 > '@') && (col - 1 > 0))
+		{
+			if(readCell((row-1),(col-1)) == player)
+			{
+				found = 1;
+     e74:	0d 2d       	mov	r16, r13
+     e76:	dc 2d       	mov	r29, r12
+     e78:	10 e0       	ldi	r17, 0x00	; 0
+     e7a:	aa 24       	eor	r10, r10
+     e7c:	a3 94       	inc	r10
+	found = 0 ;
+	row = c;
+	col = column;
+	row--;
+	col--;
+	while ((row > '@' && col > 0) && readCell(row,col) == enemy && found != 1)
+     e7e:	60 2f       	mov	r22, r16
+     e80:	8d 2f       	mov	r24, r29
+     e82:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     e86:	c8 13       	cpse	r28, r24
+     e88:	03 c0       	rjmp	.+6      	; 0xe90 <TurnOtherCheckers+0x342>
+     e8a:	11 30       	cpi	r17, 0x01	; 1
+     e8c:	b9 f6       	brne	.-82     	; 0xe3c <TurnOtherCheckers+0x2ee>
+     e8e:	02 c0       	rjmp	.+4      	; 0xe94 <TurnOtherCheckers+0x346>
+		row--;
+		col--;
+	}
+	col = column;
+	col-- ;
+	if(found == 1 && (row > '@') && (col > 0))
+     e90:	11 30       	cpi	r17, 0x01	; 1
+     e92:	11 f4       	brne	.+4      	; 0xe98 <TurnOtherCheckers+0x34a>
+     e94:	d1 34       	cpi	r29, 0x41	; 65
+     e96:	40 f4       	brcc	.+16     	; 0xea8 <TurnOtherCheckers+0x35a>
+	found = 0 ;
+	row = c;
+	col = column;
+	row++;
+	col++;
+	while ((row < 'I' && col < 9) && readCell(row,col) == enemy && found != 1)
+     e98:	88 e4       	ldi	r24, 0x48	; 72
+     e9a:	88 15       	cp	r24, r8
+     e9c:	08 f4       	brcc	.+2      	; 0xea0 <TurnOtherCheckers+0x352>
+     e9e:	80 c0       	rjmp	.+256    	; 0xfa0 <TurnOtherCheckers+0x452>
+     ea0:	88 e0       	ldi	r24, 0x08	; 8
+     ea2:	8e 15       	cp	r24, r14
+     ea4:	68 f5       	brcc	.+90     	; 0xf00 <TurnOtherCheckers+0x3b2>
+     ea6:	7c c0       	rjmp	.+248    	; 0xfa0 <TurnOtherCheckers+0x452>
+		row--;
+		col--;
+	}
+	col = column;
+	col-- ;
+	if(found == 1 && (row > '@') && (col > 0))
+     ea8:	dd 20       	and	r13, r13
+     eaa:	b1 f3       	breq	.-20     	; 0xe98 <TurnOtherCheckers+0x34a>
+	{
+		for(uint8_t i = c-1; ((i > row) && (col > 0)); i--)
+     eac:	dc 15       	cp	r29, r12
+     eae:	a0 f7       	brcc	.-24     	; 0xe98 <TurnOtherCheckers+0x34a>
+		{
+			setChecker(i,col,player);
+     eb0:	4f 2d       	mov	r20, r15
+     eb2:	6d 2d       	mov	r22, r13
+     eb4:	8c 2d       	mov	r24, r12
+     eb6:	0e 94 49 00 	call	0x92	; 0x92 <setChecker>
+			col--;
+     eba:	da 94       	dec	r13
+	}
+	col = column;
+	col-- ;
+	if(found == 1 && (row > '@') && (col > 0))
+	{
+		for(uint8_t i = c-1; ((i > row) && (col > 0)); i--)
+     ebc:	ca 94       	dec	r12
+     ebe:	dc 15       	cp	r29, r12
+     ec0:	58 f7       	brcc	.-42     	; 0xe98 <TurnOtherCheckers+0x34a>
+     ec2:	d1 10       	cpse	r13, r1
+     ec4:	f5 cf       	rjmp	.-22     	; 0xeb0 <TurnOtherCheckers+0x362>
+     ec6:	e8 cf       	rjmp	.-48     	; 0xe98 <TurnOtherCheckers+0x34a>
+	col = column;
+	row++;
+	col++;
+	while ((row < 'I' && col < 9) && readCell(row,col) == enemy && found != 1)
+	{
+		if ((row+1 < 'I') && (col + 1 < 9))
+     ec8:	8d 2f       	mov	r24, r29
+     eca:	90 e0       	ldi	r25, 0x00	; 0
+     ecc:	01 96       	adiw	r24, 0x01	; 1
+     ece:	89 34       	cpi	r24, 0x49	; 73
+     ed0:	91 05       	cpc	r25, r1
+     ed2:	74 f4       	brge	.+28     	; 0xef0 <TurnOtherCheckers+0x3a2>
+     ed4:	80 2f       	mov	r24, r16
+     ed6:	90 e0       	ldi	r25, 0x00	; 0
+     ed8:	01 96       	adiw	r24, 0x01	; 1
+     eda:	09 97       	sbiw	r24, 0x09	; 9
+     edc:	4c f4       	brge	.+18     	; 0xef0 <TurnOtherCheckers+0x3a2>
+		{
+			if(readCell((row+1),(col+1)) == player)
+     ede:	61 e0       	ldi	r22, 0x01	; 1
+     ee0:	60 0f       	add	r22, r16
+     ee2:	81 e0       	ldi	r24, 0x01	; 1
+     ee4:	8d 0f       	add	r24, r29
+     ee6:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     eea:	f8 12       	cpse	r15, r24
+     eec:	01 c0       	rjmp	.+2      	; 0xef0 <TurnOtherCheckers+0x3a2>
+			{
+				found = 1;
+     eee:	1c 2d       	mov	r17, r12
+			}
+		}
+		row++;
+     ef0:	df 5f       	subi	r29, 0xFF	; 255
+		col++;
+     ef2:	0f 5f       	subi	r16, 0xFF	; 255
+	found = 0 ;
+	row = c;
+	col = column;
+	row++;
+	col++;
+	while ((row < 'I' && col < 9) && readCell(row,col) == enemy && found != 1)
+     ef4:	d9 34       	cpi	r29, 0x49	; 73
+     ef6:	09 f4       	brne	.+2      	; 0xefa <TurnOtherCheckers+0x3ac>
+     ef8:	53 c0       	rjmp	.+166    	; 0xfa0 <TurnOtherCheckers+0x452>
+     efa:	09 30       	cpi	r16, 0x09	; 9
+     efc:	31 f4       	brne	.+12     	; 0xf0a <TurnOtherCheckers+0x3bc>
+     efe:	31 c0       	rjmp	.+98     	; 0xf62 <TurnOtherCheckers+0x414>
+     f00:	0e 2d       	mov	r16, r14
+     f02:	d8 2d       	mov	r29, r8
+     f04:	10 e0       	ldi	r17, 0x00	; 0
+	{
+		if ((row+1 < 'I') && (col + 1 < 9))
+		{
+			if(readCell((row+1),(col+1)) == player)
+			{
+				found = 1;
+     f06:	cc 24       	eor	r12, r12
+     f08:	c3 94       	inc	r12
+	found = 0 ;
+	row = c;
+	col = column;
+	row++;
+	col++;
+	while ((row < 'I' && col < 9) && readCell(row,col) == enemy && found != 1)
+     f0a:	60 2f       	mov	r22, r16
+     f0c:	8d 2f       	mov	r24, r29
+     f0e:	0e 94 81 00 	call	0x102	; 0x102 <readCell>
+     f12:	c8 13       	cpse	r28, r24
+     f14:	03 c0       	rjmp	.+6      	; 0xf1c <TurnOtherCheckers+0x3ce>
+     f16:	11 30       	cpi	r17, 0x01	; 1
+     f18:	b9 f6       	brne	.-82     	; 0xec8 <TurnOtherCheckers+0x37a>
+     f1a:	40 c0       	rjmp	.+128    	; 0xf9c <TurnOtherCheckers+0x44e>
+		row++;
+		col++;
+	}
+	col = column;
+	col++ ;
+	if(found == 1 && (row < 'I') && (col < 9))
+     f1c:	11 30       	cpi	r17, 0x01	; 1
+     f1e:	09 f0       	breq	.+2      	; 0xf22 <TurnOtherCheckers+0x3d4>
+     f20:	3f c0       	rjmp	.+126    	; 0xfa0 <TurnOtherCheckers+0x452>
+     f22:	3c c0       	rjmp	.+120    	; 0xf9c <TurnOtherCheckers+0x44e>
+	{
+		for(uint8_t i = c+1; ((i < row) && (col < 9)); i++)
+     f24:	8d 16       	cp	r8, r29
+     f26:	e0 f5       	brcc	.+120    	; 0xfa0 <TurnOtherCheckers+0x452>
+		{
+			setChecker(i,col,player);
+     f28:	4f 2d       	mov	r20, r15
+     f2a:	6e 2d       	mov	r22, r14
+     f2c:	88 2d       	mov	r24, r8
+     f2e:	0e 94 49 00 	call	0x92	; 0x92 <setChecker>
+			col++;
+     f32:	e3 94       	inc	r14
+	}
+	col = column;
+	col++ ;
+	if(found == 1 && (row < 'I') && (col < 9))
+	{
+		for(uint8_t i = c+1; ((i < row) && (col < 9)); i++)
+     f34:	83 94       	inc	r8
+     f36:	8d 16       	cp	r8, r29
+     f38:	98 f5       	brcc	.+102    	; 0xfa0 <TurnOtherCheckers+0x452>
+     f3a:	89 e0       	ldi	r24, 0x09	; 9
+     f3c:	e8 12       	cpse	r14, r24
+     f3e:	f4 cf       	rjmp	.-24     	; 0xf28 <TurnOtherCheckers+0x3da>
+     f40:	2f c0       	rjmp	.+94     	; 0xfa0 <TurnOtherCheckers+0x452>
+		row--;
+		col++;
+	}
+	col = column;
+	col++ ;
+	if(found == 1 && (row > '@') && (col < 9))
+     f42:	11 30       	cpi	r17, 0x01	; 1
+     f44:	09 f0       	breq	.+2      	; 0xf48 <TurnOtherCheckers+0x3fa>
+     f46:	1e cf       	rjmp	.-452    	; 0xd84 <TurnOtherCheckers+0x236>
+     f48:	24 cf       	rjmp	.-440    	; 0xd92 <TurnOtherCheckers+0x244>
+		row++;
+		col--;
+	}
+	col = column;
+	col-- ;
+	if(found == 1 && (row < 'I') && (col > 0))
+     f4a:	11 30       	cpi	r17, 0x01	; 1
+     f4c:	e9 f4       	brne	.+58     	; 0xf88 <TurnOtherCheckers+0x43a>
+     f4e:	64 cf       	rjmp	.-312    	; 0xe18 <TurnOtherCheckers+0x2ca>
+	found = 0 ;
+	row = c;
+	col = column;
+	row--;
+	col--;
+	while ((row > '@' && col > 0) && readCell(row,col) == enemy && found != 1)
+     f50:	80 e4       	ldi	r24, 0x40	; 64
+     f52:	8c 15       	cp	r24, r12
+     f54:	08 f4       	brcc	.+2      	; 0xf58 <TurnOtherCheckers+0x40a>
+     f56:	8e cf       	rjmp	.-228    	; 0xe74 <TurnOtherCheckers+0x326>
+     f58:	9f cf       	rjmp	.-194    	; 0xe98 <TurnOtherCheckers+0x34a>
+		row--;
+		col--;
+	}
+	col = column;
+	col-- ;
+	if(found == 1 && (row > '@') && (col > 0))
+     f5a:	11 30       	cpi	r17, 0x01	; 1
+     f5c:	09 f0       	breq	.+2      	; 0xf60 <TurnOtherCheckers+0x412>
+     f5e:	9c cf       	rjmp	.-200    	; 0xe98 <TurnOtherCheckers+0x34a>
+     f60:	a3 cf       	rjmp	.-186    	; 0xea8 <TurnOtherCheckers+0x35a>
+		row++;
+		col++;
+	}
+	col = column;
+	col++ ;
+	if(found == 1 && (row < 'I') && (col < 9))
+     f62:	11 30       	cpi	r17, 0x01	; 1
+     f64:	e9 f4       	brne	.+58     	; 0xfa0 <TurnOtherCheckers+0x452>
+     f66:	de cf       	rjmp	.-68     	; 0xf24 <TurnOtherCheckers+0x3d6>
+	}
+	/*Check for players checkers from down*/
+	found = 0 ;
+	row = c;
+	col = column;
+	row++ ;
+     f68:	88 24       	eor	r8, r8
+     f6a:	83 94       	inc	r8
+     f6c:	81 0e       	add	r8, r17
+	while (row < 'I' && readCell(row,col) == enemy && found == 0)
+     f6e:	88 e4       	ldi	r24, 0x48	; 72
+     f70:	88 15       	cp	r24, r8
+     f72:	08 f0       	brcs	.+2      	; 0xf76 <TurnOtherCheckers+0x428>
+     f74:	b7 ce       	rjmp	.-658    	; 0xce4 <TurnOtherCheckers+0x196>
+     f76:	06 cf       	rjmp	.-500    	; 0xd84 <TurnOtherCheckers+0x236>
+		row--;
+		col++;
+	}
+	col = column;
+	col++ ;
+	if(found == 1 && (row > '@') && (col < 9))
+     f78:	d1 34       	cpi	r29, 0x41	; 65
+     f7a:	08 f4       	brcc	.+2      	; 0xf7e <TurnOtherCheckers+0x430>
+     f7c:	03 cf       	rjmp	.-506    	; 0xd84 <TurnOtherCheckers+0x236>
+     f7e:	09 cf       	rjmp	.-494    	; 0xd92 <TurnOtherCheckers+0x244>
+		row++;
+		col--;
+	}
+	col = column;
+	col-- ;
+	if(found == 1 && (row < 'I') && (col > 0))
+     f80:	d9 34       	cpi	r29, 0x49	; 73
+     f82:	08 f0       	brcs	.+2      	; 0xf86 <TurnOtherCheckers+0x438>
+     f84:	42 cf       	rjmp	.-380    	; 0xe0a <TurnOtherCheckers+0x2bc>
+     f86:	48 cf       	rjmp	.-368    	; 0xe18 <TurnOtherCheckers+0x2ca>
+	found = 0 ;
+	row = c;
+	col = column;
+	row--;
+	col--;
+	while ((row > '@' && col > 0) && readCell(row,col) == enemy && found != 1)
+     f88:	80 e4       	ldi	r24, 0x40	; 64
+     f8a:	8c 15       	cp	r24, r12
+     f8c:	08 f4       	brcc	.+2      	; 0xf90 <TurnOtherCheckers+0x442>
+     f8e:	72 cf       	rjmp	.-284    	; 0xe74 <TurnOtherCheckers+0x326>
+     f90:	83 cf       	rjmp	.-250    	; 0xe98 <TurnOtherCheckers+0x34a>
+     f92:	80 e4       	ldi	r24, 0x40	; 64
+     f94:	8c 15       	cp	r24, r12
+     f96:	08 f4       	brcc	.+2      	; 0xf9a <TurnOtherCheckers+0x44c>
+     f98:	3c cf       	rjmp	.-392    	; 0xe12 <TurnOtherCheckers+0x2c4>
+     f9a:	02 c0       	rjmp	.+4      	; 0xfa0 <TurnOtherCheckers+0x452>
+		row++;
+		col++;
+	}
+	col = column;
+	col++ ;
+	if(found == 1 && (row < 'I') && (col < 9))
+     f9c:	d9 34       	cpi	r29, 0x49	; 73
+     f9e:	10 f2       	brcs	.-124    	; 0xf24 <TurnOtherCheckers+0x3d6>
+		{
+			setChecker(i,col,player);
+			col++;
+		}
+	}
+}
+     fa0:	df 91       	pop	r29
+     fa2:	cf 91       	pop	r28
+     fa4:	1f 91       	pop	r17
+     fa6:	0f 91       	pop	r16
+     fa8:	ff 90       	pop	r15
+     faa:	ef 90       	pop	r14
+     fac:	df 90       	pop	r13
+     fae:	cf 90       	pop	r12
+     fb0:	bf 90       	pop	r11
+     fb2:	af 90       	pop	r10
+     fb4:	9f 90       	pop	r9
+     fb6:	8f 90       	pop	r8
+     fb8:	08 95       	ret
+
+00000fba <clearValidMoves>:
+
+void clearValidMoves(void)
+{
+     fba:	ec e6       	ldi	r30, 0x6C	; 108
+     fbc:	f0 e0       	ldi	r31, 0x00	; 0
+     fbe:	a4 e6       	ldi	r26, 0x64	; 100
+     fc0:	b0 e0       	ldi	r27, 0x00	; 0
+     fc2:	84 e7       	ldi	r24, 0x74	; 116
+     fc4:	90 e0       	ldi	r25, 0x00	; 0
+	for (uint8_t i = 0; i < SIZE / 2; i++)
+	{
+		mineValidtable[i] = 0 ;
+     fc6:	11 92       	st	Z+, r1
+		enemyValidtable[i] = 0 ;
+     fc8:	1d 92       	st	X+, r1
+	}
+}
+
+void clearValidMoves(void)
+{
+	for (uint8_t i = 0; i < SIZE / 2; i++)
+     fca:	e8 17       	cp	r30, r24
+     fcc:	f9 07       	cpc	r31, r25
+     fce:	d9 f7       	brne	.-10     	; 0xfc6 <clearValidMoves+0xc>
+	{
+		mineValidtable[i] = 0 ;
+		enemyValidtable[i] = 0 ;
+	}
+}
+     fd0:	08 95       	ret
+
+00000fd2 <tableInit>:
+}
+
+
+
+void tableInit(void)
+{
+     fd2:	e4 e7       	ldi	r30, 0x74	; 116
+     fd4:	f0 e0       	ldi	r31, 0x00	; 0
+     fd6:	84 e8       	ldi	r24, 0x84	; 132
+     fd8:	90 e0       	ldi	r25, 0x00	; 0
+	for (uint8_t i = 0; i < SIZE; i++)
+	{
+		table[i] = 0 ;
+     fda:	11 92       	st	Z+, r1
+
+
+
+void tableInit(void)
+{
+	for (uint8_t i = 0; i < SIZE; i++)
+     fdc:	e8 17       	cp	r30, r24
+     fde:	f9 07       	cpc	r31, r25
+     fe0:	e1 f7       	brne	.-8      	; 0xfda <tableInit+0x8>
+	{
+		table[i] = 0 ;
+	}
+	clearValidMoves() ;
+     fe2:	0e 94 dd 07 	call	0xfba	; 0xfba <clearValidMoves>
+	setChecker('D',4,'W') ;
+     fe6:	47 e5       	ldi	r20, 0x57	; 87
+     fe8:	64 e0       	ldi	r22, 0x04	; 4
+     fea:	84 e4       	ldi	r24, 0x44	; 68
+     fec:	0e 94 49 00 	call	0x92	; 0x92 <setChecker>
+	setChecker('D',5,'B') ;
+     ff0:	42 e4       	ldi	r20, 0x42	; 66
+     ff2:	65 e0       	ldi	r22, 0x05	; 5
+     ff4:	84 e4       	ldi	r24, 0x44	; 68
+     ff6:	0e 94 49 00 	call	0x92	; 0x92 <setChecker>
+	setChecker('E',4,'B') ;
+     ffa:	42 e4       	ldi	r20, 0x42	; 66
+     ffc:	64 e0       	ldi	r22, 0x04	; 4
+     ffe:	85 e4       	ldi	r24, 0x45	; 69
+    1000:	0e 94 49 00 	call	0x92	; 0x92 <setChecker>
+	setChecker('E',5,'W') ;
+    1004:	47 e5       	ldi	r20, 0x57	; 87
+    1006:	65 e0       	ldi	r22, 0x05	; 5
+    1008:	85 e4       	ldi	r24, 0x45	; 69
+    100a:	0e 94 49 00 	call	0x92	; 0x92 <setChecker>
+    100e:	08 95       	ret
+
+00001010 <main>:
+char myLine = 'A' ;
+uint8_t myColumn = 1 ;
+
+int main(void)
+{
+	tableInit() ;
+    1010:	0e 94 e9 07 	call	0xfd2	; 0xfd2 <tableInit>
+	mine = 'B' ;
+    1014:	82 e4       	ldi	r24, 0x42	; 66
+    1016:	80 93 63 00 	sts	0x0063, r24	; 0x800063 <mine>
+	enemy = 'W' ;
+    101a:	87 e5       	ldi	r24, 0x57	; 87
+    101c:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <enemy>
+	
+	scanChessboard(mine) ;
+    1020:	82 e4       	ldi	r24, 0x42	; 66
+    1022:	0e 94 84 04 	call	0x908	; 0x908 <scanChessboard>
+	
+	
+	setChecker('D',3,mine) ;
+    1026:	40 91 63 00 	lds	r20, 0x0063	; 0x800063 <mine>
+    102a:	63 e0       	ldi	r22, 0x03	; 3
+    102c:	84 e4       	ldi	r24, 0x44	; 68
+    102e:	0e 94 49 00 	call	0x92	; 0x92 <setChecker>
+	TurnOtherCheckers('D',3,enemy,mine) ;
+    1032:	20 91 63 00 	lds	r18, 0x0063	; 0x800063 <mine>
+    1036:	40 91 62 00 	lds	r20, 0x0062	; 0x800062 <enemy>
+    103a:	63 e0       	ldi	r22, 0x03	; 3
+    103c:	84 e4       	ldi	r24, 0x44	; 68
+    103e:	0e 94 a7 05 	call	0xb4e	; 0xb4e <TurnOtherCheckers>
+	clearValidMoves() ;
+    1042:	0e 94 dd 07 	call	0xfba	; 0xfba <clearValidMoves>
+	scanChessboard(mine) ;
+    1046:	80 91 63 00 	lds	r24, 0x0063	; 0x800063 <mine>
+    104a:	0e 94 84 04 	call	0x908	; 0x908 <scanChessboard>
+	
+	if (checkEnemyMove('C',5) == 1)
+    104e:	65 e0       	ldi	r22, 0x05	; 5
+    1050:	83 e4       	ldi	r24, 0x43	; 67
+    1052:	0e 94 96 05 	call	0xb2c	; 0xb2c <checkEnemyMove>
+    1056:	81 30       	cpi	r24, 0x01	; 1
+    1058:	a1 f4       	brne	.+40     	; 0x1082 <main+0x72>
+	{
+		setChecker('C',5,enemy) ;
+    105a:	40 91 62 00 	lds	r20, 0x0062	; 0x800062 <enemy>
+    105e:	65 e0       	ldi	r22, 0x05	; 5
+    1060:	83 e4       	ldi	r24, 0x43	; 67
+    1062:	0e 94 49 00 	call	0x92	; 0x92 <setChecker>
+		TurnOtherCheckers('C',5,mine,enemy) ;
+    1066:	20 91 62 00 	lds	r18, 0x0062	; 0x800062 <enemy>
+    106a:	40 91 63 00 	lds	r20, 0x0063	; 0x800063 <mine>
+    106e:	65 e0       	ldi	r22, 0x05	; 5
+    1070:	83 e4       	ldi	r24, 0x43	; 67
+    1072:	0e 94 a7 05 	call	0xb4e	; 0xb4e <TurnOtherCheckers>
+		clearValidMoves() ;
+    1076:	0e 94 dd 07 	call	0xfba	; 0xfba <clearValidMoves>
+		scanChessboard(mine) ;
+    107a:	80 91 63 00 	lds	r24, 0x0063	; 0x800063 <mine>
+    107e:	0e 94 84 04 	call	0x908	; 0x908 <scanChessboard>
+	}
+	
+	firstValid(mine) ;
+    1082:	80 91 63 00 	lds	r24, 0x0063	; 0x800063 <mine>
+    1086:	0e 94 40 05 	call	0xa80	; 0xa80 <firstValid>
+    108a:	ff cf       	rjmp	.-2      	; 0x108a <main+0x7a>
+
+0000108c <_exit>:
+    108c:	f8 94       	cli
+
+0000108e <__stop_program>:
+    108e:	ff cf       	rjmp	.-2      	; 0x108e <__stop_program>
